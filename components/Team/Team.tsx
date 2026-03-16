@@ -4,14 +4,14 @@ const members = [
     {
         name: 'Nithin Varma M',
         role: 'Co-Founder',
-        image: '/images/team/team-307.png',
-        shape: 'organic-1'
+        image: '/images/team/nithin.png',
+        shape: 'circle'
     },
     {
         name: 'Sai kiran G L',
         role: 'Co-Founder',
         image: '/images/team/team-308.png',
-        shape: 'arch'
+        shape: 'circle'
     },
     {
         name: 'Venkatesh A',
@@ -20,10 +20,10 @@ const members = [
         shape: 'circle'
     },
     {
-        name: 'Mahadev M',
-        role: 'Product Manager',
-        //image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop',
-        shape: 'organic-2'
+        name: 'Anjana G',
+        role: 'HR & Operations',
+        image: '/images/team/Anjana.png',
+        shape: 'circle'
     }
 ];
 

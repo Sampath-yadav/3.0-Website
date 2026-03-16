@@ -1,7 +1,7 @@
 .portfolio {
     padding: 100px 20px;
-    background: #fff;
     text-align: center;
+    background: #fff;
 }
 
 .container {
@@ -22,23 +22,15 @@
 .title {
     font-size: 48px;
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1.2;
     color: #111;
     letter-spacing: -2px;
-}
-
-.accentText {
-    background: linear-gradient(90deg, #FFAF68 0%, #B2215A 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 60px 40px;
+    gap: 80px 48px;
     justify-items: center;
 }
 
@@ -54,8 +46,6 @@
     border-radius: 20px;
     overflow: hidden;
     margin-bottom: 20px;
-    background: #f8f8f8;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .imgWrapper img {

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import styles from './BottomHero.module.css';
 
 const BottomHero = () => {
@@ -17,14 +18,16 @@ const BottomHero = () => {
                         streamline operations, and turn bold ideas into lasting digital impact.
                     </p>
                     <div className={styles.actions}>
-                        <button className={styles.ctaBtn}>
-                            Let's Collaborate
-                            <span className={styles.iconCircle}>
-                                <svg width="14" height="14" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </span>
-                        </button>
+                        <Link href="/contact-us">
+                            <button className={styles.ctaBtn}>
+                                Let's Collaborate
+                                <span className={styles.iconCircle}>
+                                    <svg width="14" height="14" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </span>
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

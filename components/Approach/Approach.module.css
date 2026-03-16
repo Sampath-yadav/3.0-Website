@@ -44,7 +44,7 @@
 /* ── Section header ─────────────────────────────────────────── */
 .header {
   text-align: left;
-  padding: 0 80px;
+  padding: 0 40px;
   flex-shrink: 0;
   position: relative;
   z-index: 10;
@@ -117,7 +117,7 @@
 .connectorBg {
   position: absolute;
   inset: 0;
-  background: transparent;
+  background: #fff;
   /* Removed thin line */
   border-radius: 100px;
 }
@@ -128,13 +128,43 @@
   left: 0;
   height: 100%;
   width: 100%;
-  /* Gradient from properties: #FFAF68 to #B2215A */
-  background: linear-gradient(90deg, #FFAF68 0%, #B2215A 100%);
+  background: linear-gradient(90deg, #FFAF68 0%, #B2215A 50%, #FFAF68 100%);
+  background-size: 200% 100%;
   border-radius: 100px;
-  box-shadow: 0 2px 8px rgba(178, 33, 90, 0.2);
+  /* Premium Glow */
+  box-shadow:
+    0 0 15px rgba(255, 92, 53, 0.4),
+    0 0 30px rgba(178, 33, 90, 0.2);
   transform: scaleX(0);
   transform-origin: left center;
   will-change: transform;
+  overflow: hidden;
+}
+
+/* Traveling light pulse effect */
+.connectorFill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.8) 50%,
+      transparent 100%);
+  filter: blur(4px);
+  animation: travelingPulse 3s infinite linear;
+}
+
+@keyframes travelingPulse {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 200%;
+  }
 }
 
 /*
@@ -273,7 +303,7 @@
 .rail {
   position: relative;
   height: 2px;
-  background: transparent;
+  background: #fff;
   /* Removed thin line */
   border-radius: 2px;
   margin-bottom: 28px;

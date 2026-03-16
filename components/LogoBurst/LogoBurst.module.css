@@ -1,0 +1,17 @@
+.container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9997;
+    /* Just below IntroLoader but above everything else */
+    overflow: hidden;
+}
+
+.miniLogo {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255, 92, 53, 0.3));
+    opacity: 0;
+    will-change: transform, opacity;
+}

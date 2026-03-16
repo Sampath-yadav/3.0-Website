@@ -234,84 +234,130 @@ export default function Approach() {
     const refreshTimer = setTimeout(() => ScrollTrigger.refresh(), 800);
 
     const ctx = gsap.context(() => {
-      /* ── Initial states ─────────────────────────────────────── */
-      cardRefs.current.forEach((card, i) => {
-        if (!card) return;
-        gsap.set(card, {
-          scale: i === 0 ? 1.05 : 0.75,
-          opacity: i === 0 ? 1 : 0.3,
-          filter: 'blur(0px)',
-          y: i === 0 ? -20 : 0,
+      const mm = gsap.matchMedia();
+
+      // DESKTOP & TABLET: Premium Pinning Animation
+      mm.add("(min-width: 769px)", () => {
+        /* ── Initial states ─────────────────────────────────────── */
+        cardRefs.current.forEach((card, i) => {
+          if (!card) return;
+          gsap.set(card, {
+            scale: i === 0 ? 1.05 : 0.75,
+            opacity: 1,
+            y: i === 0 ? -20 : 0,
+          });
+
+          if (i > 0) {
+            const content = contentRefs.current[i];
+            if (content) {
+              gsap.set(content, { height: 0, opacity: 0, visibility: 'hidden' });
+            }
+          }
         });
 
-        if (i > 0) {
+        if (fillRef.current) gsap.set(fillRef.current, { scaleX: 0, transformOrigin: 'left center' });
+        if (connectorFillRef.current) gsap.set(connectorFillRef.current, { scaleX: 0, transformOrigin: 'left center' });
+
+        /* ── Animated Timeline ─────────────────────────────────── */
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: () => `+=${STEPS * window.innerHeight * 1.2}`,
+            pin: true,
+            scrub: 1.2,
+            onUpdate: (self) => {
+              const rawIndex = self.progress * STEPS;
+              cardRefs.current.forEach((card, i) => {
+                if (!card) return;
+                const dist = Math.abs(i - rawIndex);
+                const t = Math.min(dist / 0.4, 1);
+                const isActive = dist < 0.15;
+
+                gsap.set(card, {
+                  scale: 1.1 - t * 0.4,
+                  opacity: 1,
+                  y: isActive ? -25 : 0,
+                });
+
+                if (i > 0) {
+                  const content = contentRefs.current[i];
+                  if (content) {
+                    const expandT = Math.min(dist / 0.15, 1);
+                    const isOpen = dist < 0.15;
+
+                    gsap.set(content, {
+                      height: isOpen ? 'auto' : 0,
+                      opacity: 1 - expandT,
+                      visibility: (1 - expandT) > 0 ? 'visible' : 'hidden',
+                      marginTop: isOpen ? 20 : 0
+                    });
+                  }
+                }
+              });
+
+              dotRefs.current.forEach((dot, i) => {
+                if (!dot) return;
+                const dist = Math.abs(i - rawIndex);
+                gsap.set(dot, {
+                  backgroundColor: dist < 0.4 ? '#B2215A' : '#d4d4d4',
+                  scale: dist < 0.4 ? 1.6 : 1,
+                });
+              });
+            }
+          }
+        });
+
+        const track = trackRef.current;
+        if (track) tl.to(track, { x: () => -(STEPS * window.innerWidth * 0.5), ease: 'none' });
+        if (fillRef.current) tl.to(fillRef.current, { scaleX: 1, ease: 'none' }, 0);
+        if (connectorFillRef.current) tl.to(connectorFillRef.current, { scaleX: 1, ease: 'none' }, 0);
+      });
+
+      // MOBILE: Native Scroll with Simplified Fades
+      mm.add("(max-width: 768px)", () => {
+        // Ensure initial state for mobile
+        cardRefs.current.forEach((card, i) => {
+          if (!card) return;
+          gsap.set(card, {
+            scale: 1,
+            opacity: 1,
+            y: 0,
+            x: 0
+          });
+
           const content = contentRefs.current[i];
           if (content) {
-            gsap.set(content, { height: 0, opacity: 0, visibility: 'hidden' });
+            gsap.set(content, {
+              height: 'auto',
+              opacity: 1,
+              visibility: 'visible',
+              marginTop: 20
+            });
           }
-        }
-      });
+        });
 
-      if (fillRef.current) gsap.set(fillRef.current, { scaleX: 0, transformOrigin: 'left center' });
-      if (connectorFillRef.current) gsap.set(connectorFillRef.current, { scaleX: 0, transformOrigin: 'left center' });
-
-      /* ── Animated Timeline ─────────────────────────────────── */
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: 'top top',
-          end: () => `+=${STEPS * window.innerHeight * 0.5}`,
-          pin: true,
-          scrub: 0.8, // More responsive
-          onUpdate: (self) => {
-            const rawIndex = self.progress * STEPS;
-            cardRefs.current.forEach((card, i) => {
-              if (!card) return;
-              const dist = Math.abs(i - rawIndex);
-              const t = Math.min(dist / 0.4, 1); // Sharper transition window
-              const isActive = dist < 0.15;
-
-              gsap.set(card, {
-                scale: 1.1 - t * 0.4, // Max: 1.1, Min: 0.7
-                opacity: 1 - t * 0.75,
-                filter: 'blur(0px)',
-                y: isActive ? -25 : 0,
-              });
-
-              // Expansion Logic for Cards 2-6
-              if (i > 0) {
-                const content = contentRefs.current[i];
-                if (content) {
-                  const expandT = Math.min(dist / 0.15, 1); // Narrower window for expansion
-                  const isOpen = dist < 0.15;
-
-                  gsap.set(content, {
-                    height: isOpen ? 'auto' : 0,
-                    opacity: 1 - expandT,
-                    visibility: (1 - expandT) > 0 ? 'visible' : 'hidden',
-                    marginTop: isOpen ? 20 : 0
-                  });
-                }
+        // Simplified interaction for mobile - cards reveal as they scroll horizontally
+        cardRefs.current.forEach((card, i) => {
+          if (!card) return;
+          gsap.fromTo(card,
+            { opacity: 0.4, scale: 0.9 },
+            {
+              opacity: 1,
+              scale: 1,
+              scrollTrigger: {
+                trigger: card,
+                containerAnimation: undefined, // Native scroll
+                scroller: trackRef.current?.parentElement || window,
+                horizontal: true,
+                start: 'left 80%',
+                end: 'left 50%',
+                scrub: true,
               }
-            });
-
-            dotRefs.current.forEach((dot, i) => {
-              if (!dot) return;
-              const dist = Math.abs(i - rawIndex);
-              gsap.set(dot, {
-                backgroundColor: dist < 0.4 ? '#B2215A' : '#d4d4d4',
-                scale: dist < 0.4 ? 1.6 : 1,
-              });
-            });
-          }
-        }
+            }
+          );
+        });
       });
-
-      const track = trackRef.current;
-      if (track) tl.to(track, { x: () => -(STEPS * window.innerWidth * 0.5), ease: 'none' });
-      if (fillRef.current) tl.to(fillRef.current, { scaleX: 1, ease: 'none' }, 0);
-      if (connectorFillRef.current) tl.to(connectorFillRef.current, { scaleX: 1, ease: 'none' }, 0);
-      // Background is static — no parallax movement
     }, sectionRef);
 
     return () => {

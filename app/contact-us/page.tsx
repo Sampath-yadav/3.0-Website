@@ -5,7 +5,7 @@ import Footer from "../../components/Footer/Footer";
 
 export default function ContactUs() {
   return (
-    <main style={{ background: '#fff' }}>
+    <main>
       <Header />
       <ContactForm />
       <CTASection />

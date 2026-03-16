@@ -1,30 +1,48 @@
+import Link from 'next/link';
 import styles from './Portfolio.module.css';
 
 const projects = [
     {
-        title: 'Blue Cross Hyderabad',
-        image: '/images/portfolio/blue-cross-mockup.png',
-        width: 598,
-        height: 409
+        title: 'FundPitch',
+        image: '/portfolioimages/fundpitch.png',
+        width: 600,
+        height: 400,
+        href: '/portfolio/fundpitch'
     },
     {
-        title: 'Starlink',
-        image: '/images/portfolio/Starlink.png',
-        width: 598,
-        height: 409
+        title: 'VITS',
+        image: '/portfolioimages/VITS 1.png',
+        width: 600,
+        height: 400,
+        href: '/portfolio/vits'
     },
     {
         title: 'Bhoomibox',
-        image: '/images/portfolio/bb.png',
-        width: 601,
-        height: 360
-
+        image: '/portfolioimages/BhoomiBox 1.png',
+        width: 600,
+        height: 400,
+        href: '/portfolio/bhoomibox'
     },
     {
         title: 'NaviPrep',
-        image: '/images/portfolio/Naviprep.png',
-        width: 607,
-        height: 354
+        image: '/portfolioimages/Sailor 1.png',
+        width: 600,
+        height: 400,
+        href: '/portfolio/naviprep'
+    },
+    {
+        title: 'Starlink',
+        image: '/portfolioimages/starlink.png',
+        width: 600,
+        height: 400,
+        href: '/portfolio/starlink'
+    },
+    {
+        title: 'Blue Cross Hyderabad',
+        image: '/portfolioimages/bluegross.png',
+        width: 600,
+        height: 400,
+        href: '/portfolio/blue-cross-hyderabad'
     }
 ];
 
@@ -34,26 +52,38 @@ const Portfolio = () => {
             <div className={styles.container}>
                 <div className={styles.header}>
                     <h2 className={styles.title}>
-                        How we <span className={styles.accentText}>transformed</span> idea and <br />
+                        How we transformed idea and <br />
                         requirement into Product
                     </h2>
                 </div>
 
                 <div className={styles.grid}>
-                    {projects.map((project, index) => (
-                        <div key={index} className={styles.card}>
-                            <div
-                                className={styles.imgWrapper}
-                                style={{
-                                    maxWidth: `${project.width}px`,
-                                    aspectRatio: `${project.width}/${project.height}`
-                                }}
-                            >
-                                <img src={project.image} alt={project.title} />
+                    {projects.map((project, index) => {
+                        const content = (
+                            <>
+                                <div
+                                    className={styles.imgWrapper}
+                                    style={{
+                                        maxWidth: `${project.width}px`,
+                                        aspectRatio: `${project.width}/${project.height}`
+                                    }}
+                                >
+                                    <img src={project.image} alt={project.title} />
+                                </div>
+                                <h4 className={styles.projTitle}>{project.title}</h4>
+                            </>
+                        );
+
+                        return project.href ? (
+                            <Link key={index} href={project.href} className={styles.card}>
+                                {content}
+                            </Link>
+                        ) : (
+                            <div key={index} className={styles.card}>
+                                {content}
                             </div>
-                            <h4 className={styles.projTitle}>{project.title}</h4>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </section>

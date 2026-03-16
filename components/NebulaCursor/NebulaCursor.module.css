@@ -1,0 +1,68 @@
+.cursorContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 99999;
+}
+
+.core {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #000;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.nebula {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(
+        circle, 
+        rgba(255, 255, 255, 0.8) 0%, 
+        rgba(216, 180, 254, 0.4) 30%, 
+        rgba(139, 92, 246, 0.2) 60%, 
+        rgba(99, 102, 241, 0.05) 80%,
+        transparent 100%
+    );
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(25px);
+    will-change: transform, opacity;
+    mix-blend-mode: screen;
+}
+
+.nebulaInner {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(
+        circle, 
+        rgba(255, 255, 255, 1) 0%, 
+        rgba(167, 139, 250, 0.4) 50%, 
+        transparent 100%
+    );
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(15px);
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    .cursorContainer {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .cursorContainer {
+        display: none;
+    }
+}
