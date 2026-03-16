@@ -50,7 +50,6 @@
     font-family: var(--font-primary);
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
-    cursor: none;
   }
 
   h1,
@@ -76,7 +75,7 @@
   select,
   textarea,
   [role="button"] {
-    cursor: none !important;
+    cursor: pointer;
   }
 
   a {
