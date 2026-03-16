@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
+import IntroLoaderWrapper from "../components/IntroLoader/IntroLoaderWrapper";
+import WavyBgAnimatorWrapper from "../components/WavyBgAnimator/WavyBgAnimatorWrapper";
 
 export const metadata: Metadata = {
   title: "3.0 Labs | Engineering Intelligent Products",
@@ -14,8 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+<IntroLoaderWrapper />
+        <ScrollToTop />
         <div className="mesh-bg"></div>
-        <div className="wavy-glow"></div>
+        <div className="wavy-glow-left" id="wavy-left"></div>
+        <div className="wavy-glow-right" id="wavy-right"></div>
+        <WavyBgAnimatorWrapper />
         {children}
       </body>
     </html>
