@@ -3,7 +3,6 @@ import "./globals.css";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import IntroLoaderWrapper from "@/components/IntroLoader/IntroLoaderWrapper";
 import WavyBgAnimatorWrapper from "@/components/WavyBgAnimator/WavyBgAnimatorWrapper";
-import NebulaCursor from "@/components/NebulaCursor/NebulaCursor";
 
 export const metadata: Metadata = {
   title: "3.0 Labs | Engineering Intelligent Products",
@@ -23,8 +22,7 @@ export default function RootLayout({
         <div className="mesh-bg"></div>
         <div className="wavy-glow-left" id="wavy-left"></div>
         <div className="wavy-glow-right" id="wavy-right"></div>
-        <NebulaCursor />
-        <WavyBgAnimatorWrapper />
+<WavyBgAnimatorWrapper />
         {children}
       </body>
     </html>
