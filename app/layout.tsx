@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
-import IntroLoaderWrapper from "../components/IntroLoader/IntroLoaderWrapper";
-import WavyBgAnimatorWrapper from "../components/WavyBgAnimator/WavyBgAnimatorWrapper";
+import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
+import IntroLoaderWrapper from "@/components/IntroLoader/IntroLoaderWrapper";
+import WavyBgAnimatorWrapper from "@/components/WavyBgAnimator/WavyBgAnimatorWrapper";
 
 export const metadata: Metadata = {
   title: "3.0 Labs | Engineering Intelligent Products",
