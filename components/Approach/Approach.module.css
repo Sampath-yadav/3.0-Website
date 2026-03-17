@@ -133,8 +133,8 @@
   border-radius: 100px;
   /* Premium Glow */
   box-shadow:
-    0 0 15px rgba(255, 92, 53, 0.4),
-    0 0 30px rgba(178, 33, 90, 0.2);
+    0 0 10px rgba(255, 92, 53, 0.3),
+    0 0 20px rgba(178, 33, 90, 0.15);
   transform: scaleX(0);
   transform-origin: left center;
   will-change: transform;
@@ -154,7 +154,7 @@
       rgba(255, 255, 255, 0.8) 50%,
       transparent 100%);
   filter: blur(4px);
-  animation: travelingPulse 3s infinite linear;
+  animation: travelingPulse 6s infinite linear;
 }
 
 @keyframes travelingPulse {
@@ -174,17 +174,16 @@
 */
 .cardWrapper {
   flex-shrink: 0;
-  width: 350px;
-  margin: 0 calc((50vw - 350px) / 2);
+  width: 380px;
+  margin: 0 calc((50vw - 380px) / 2);
   position: relative;
   z-index: 1;
 }
 
 /* ── Card ───────────────────────────────────────────────────── */
 .card {
-  width: 350px;
+  width: 380px;
   min-height: 60px;
-  /* Wider and Shorter */
   display: flex;
   flex-direction: column;
   background: #ffffff;
@@ -194,8 +193,8 @@
   position: relative;
   overflow: hidden;
   transform-origin: center center;
-  transition: box-shadow 0.35s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: box-shadow 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 }
 
 /* Gradient border via pseudo-element (border-image doesn't work with border-radius) */
@@ -423,12 +422,12 @@
 
 @media (max-width: 1024px) and (min-width: 769px) {
   .cardWrapper {
-    width: 350px;
-    margin: 0 calc((50vw - 350px) / 2);
+    width: 340px;
+    margin: 0 calc((50vw - 340px) / 2);
   }
 
   .card {
-    width: 350px;
+    width: 340px;
   }
 
   .heading {

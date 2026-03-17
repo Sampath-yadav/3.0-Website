@@ -242,9 +242,9 @@ export default function Approach() {
         cardRefs.current.forEach((card, i) => {
           if (!card) return;
           gsap.set(card, {
-            scale: i === 0 ? 1.05 : 0.75,
-            opacity: 1,
-            y: i === 0 ? -20 : 0,
+            scale: 1,
+            opacity: i === 0 ? 1 : 0.6,
+            y: 0,
           });
 
           if (i > 0) {
@@ -265,31 +265,29 @@ export default function Approach() {
             start: 'top top',
             end: () => `+=${STEPS * window.innerHeight * 1.2}`,
             pin: true,
-            scrub: 1.2,
+            scrub: 2,
             onUpdate: (self) => {
               const rawIndex = self.progress * STEPS;
               cardRefs.current.forEach((card, i) => {
                 if (!card) return;
                 const dist = Math.abs(i - rawIndex);
-                const t = Math.min(dist / 0.4, 1);
-                const isActive = dist < 0.15;
+                const isActive = dist < 0.3;
 
                 gsap.set(card, {
-                  scale: 1.1 - t * 0.4,
-                  opacity: 1,
-                  y: isActive ? -25 : 0,
+                  scale: isActive ? 1.03 : 0.97,
+                  opacity: isActive ? 1 : 0.5,
+                  y: isActive ? -10 : 0,
                 });
 
                 if (i > 0) {
                   const content = contentRefs.current[i];
                   if (content) {
-                    const expandT = Math.min(dist / 0.15, 1);
-                    const isOpen = dist < 0.15;
+                    const isOpen = dist < 0.3;
 
                     gsap.set(content, {
                       height: isOpen ? 'auto' : 0,
-                      opacity: 1 - expandT,
-                      visibility: (1 - expandT) > 0 ? 'visible' : 'hidden',
+                      opacity: isOpen ? 1 : 0,
+                      visibility: isOpen ? 'visible' : 'hidden',
                       marginTop: isOpen ? 20 : 0
                     });
                   }
