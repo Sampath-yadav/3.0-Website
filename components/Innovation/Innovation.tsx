@@ -57,17 +57,18 @@ const Innovation = () => {
 
                 <div className={styles.grid}>
                     {services.map((service, index) => (
-                        <motion.div
-                            key={index}
-                            className={`${styles.card} ${styles[service.type]}`}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-40px' }}
-                            transition={{ duration: 0.5, delay: index * 0.15 }}
-                        >
-                            <div className={styles.cardIcon}>{service.icon}</div>
-                            <h3 className={styles.serviceTitle}>{service.title}</h3>
-                        </motion.div>
+                        <Link key={index} href="/services" className={styles.cardLink}>
+                            <motion.div
+                                className={`${styles.card} ${styles[service.type]}`}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-40px' }}
+                                transition={{ duration: 0.5, delay: index * 0.15 }}
+                            >
+                                <div className={styles.cardIcon}>{service.icon}</div>
+                                <h3 className={styles.serviceTitle}>{service.title}</h3>
+                            </motion.div>
+                        </Link>
                     ))}
                 </div>
 
@@ -87,14 +88,16 @@ const Innovation = () => {
                                 </span>
                             </button>
                         </Link>
-                        <button className={styles.btnPillOutline}>
-                            View Portfolio
-                            <span className={styles.iconCircleOutline}>
-                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                    <path d="M1 11L11 1M11 1H1M11 1V11" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </span>
-                        </button>
+                        <Link href="/portfolio">
+                            <button className={styles.btnPillOutline}>
+                                View Portfolio
+                                <span className={styles.iconCircleOutline}>
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                        <path d="M1 11L11 1M11 1H1M11 1V11" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </span>
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

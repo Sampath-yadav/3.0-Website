@@ -46,6 +46,12 @@
     margin-bottom: 40px;
 }
 
+.cardLink {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .card {
     padding: 40px;
     border-radius: 24px;
@@ -54,6 +60,7 @@
     justify-content: flex-end;
     min-height: 240px;
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .card:hover {
