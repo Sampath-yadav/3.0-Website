@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import styles from './Portfolio.module.css';
 
 const projects = [
@@ -74,14 +77,24 @@ const Portfolio = () => {
                             </>
                         );
 
-                        return project.href ? (
-                            <Link key={index} href={project.href} className={styles.card}>
-                                {content}
-                            </Link>
-                        ) : (
-                            <div key={index} className={styles.card}>
-                                {content}
-                            </div>
+                        return (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-40px' }}
+                                transition={{ duration: 0.5, delay: (index % 2) * 0.15 }}
+                            >
+                                {project.href ? (
+                                    <Link href={project.href} className={styles.card}>
+                                        {content}
+                                    </Link>
+                                ) : (
+                                    <div className={styles.card}>
+                                        {content}
+                                    </div>
+                                )}
+                            </motion.div>
                         );
                     })}
                 </div>

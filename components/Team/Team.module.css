@@ -140,8 +140,13 @@
 }
 
 @media (max-width: 640px) {
+    .team {
+        padding: 60px 12px;
+    }
+
     .grid {
         grid-template-columns: 1fr;
+        gap: 32px;
     }
 
     .container {
@@ -149,6 +154,14 @@
     }
 
     .header {
-        margin-bottom: 60px;
+        margin-bottom: 40px;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .name {
+        font-size: 18px;
     }
 }

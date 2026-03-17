@@ -361,7 +361,16 @@
   .section {
     height: auto;
     overflow: visible;
-    padding: 80px 0 64px;
+    padding: 60px 0 48px;
+  }
+
+  .header {
+    padding: 0 20px;
+    margin-bottom: 32px;
+  }
+
+  .eyebrow {
+    font-size: 22px;
   }
 
   .grid {
@@ -382,21 +391,25 @@
 
   .track {
     transform: none !important;
-    padding: 0 20px;
+    padding: 0 12px;
   }
 
   .cardWrapper {
-    width: min(320px, 80vw);
-    margin: 0 10px;
+    width: min(280px, 80vw);
+    margin: 0 8px;
   }
 
   .card {
     width: 100%;
     height: auto;
-    min-height: 380px;
+    min-height: auto;
     transform: none !important;
     opacity: 1 !important;
     filter: none !important;
+  }
+
+  .connectorWrap {
+    display: none;
   }
 
   .heading {

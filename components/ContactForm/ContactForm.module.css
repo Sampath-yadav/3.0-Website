@@ -271,9 +271,66 @@
   gap: 16px;
 }
 
+@media (max-width: 640px) {
+  .section {
+    padding: 80px 0;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .header {
+    margin-bottom: 48px;
+  }
+
+  .heading {
+    font-size: 32px !important;
+  }
+
+  .subtext {
+    font-size: 16px !important;
+  }
+
+  .formBox {
+    padding: 28px 20px;
+    border-radius: 24px;
+  }
+
+  .boxHeading {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+
+  .detailCard {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
+  .infoHeading {
+    font-size: 20px;
+  }
+}
+
 @media (max-width: 480px) {
   .officeGrid {
     grid-template-columns: 1fr;
+  }
+
+  .heading {
+    font-size: 28px !important;
+  }
+
+  .formBox {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+
+  .input,
+  .textarea,
+  .select {
+    padding: 14px 16px;
+    font-size: 14px;
   }
 }
 

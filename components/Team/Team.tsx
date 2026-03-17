@@ -1,3 +1,6 @@
+'use client';
+
+import { motion } from 'framer-motion';
 import styles from './Team.module.css';
 
 const members = [
@@ -39,7 +42,14 @@ const Team = () => {
 
                 <div className={styles.grid}>
                     {members.map((member, index) => (
-                        <div key={index} className={styles.card}>
+                        <motion.div
+                            key={index}
+                            className={styles.card}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: '-40px' }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                        >
                             <div className={`${styles.imgWrapper} ${styles[member.shape]}`}>
                                 <img src={member.image} alt={member.name} />
                             </div>
@@ -57,7 +67,7 @@ const Team = () => {
                                     </svg>
                                 </a>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

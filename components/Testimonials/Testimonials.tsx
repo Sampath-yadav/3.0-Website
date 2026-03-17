@@ -1,3 +1,6 @@
+'use client';
+
+import { motion } from 'framer-motion';
 import styles from './Testimonials.module.css';
 
 const testimonials = [
@@ -37,8 +40,15 @@ const Testimonials = () => {
                 </div>
 
                 <div className={styles.grid}>
-                    {testimonials.map((item) => (
-                        <div key={item.id} className={`${styles.card} ${styles[`card${item.id}`]}`}>
+                    {testimonials.map((item, index) => (
+                        <motion.div
+                            key={item.id}
+                            className={`${styles.card} ${styles[`card${item.id}`]}`}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: '-40px' }}
+                            transition={{ duration: 0.5, delay: index * 0.15 }}
+                        >
                             {item.type === 'image-top' ? (
                                 <>
                                     <div className={styles.imageWrapper}>
@@ -66,7 +76,7 @@ const Testimonials = () => {
                                     </div>
                                 </>
                             )}
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

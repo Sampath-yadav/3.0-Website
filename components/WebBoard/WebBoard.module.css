@@ -64,15 +64,37 @@
 
 @media (max-width: 768px) {
     .board {
-        width: 300px;
-        height: 150px;
+        width: 160px;
+        height: 80px;
+        border-radius: 14px;
     }
 
     .boardTitle {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     .boardLogo {
-        width: 60px;
+        width: 50px;
+    }
+
+    .left {
+        left: 5%;
+    }
+
+    .right {
+        right: 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    .board {
+        width: 120px;
+        height: 60px;
+        border-radius: 10px;
+    }
+
+    .boardTitle {
+        font-size: 13px;
+        letter-spacing: 0.5px;
     }
 }

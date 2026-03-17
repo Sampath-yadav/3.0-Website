@@ -7,18 +7,31 @@ import Team from "../components/Team/Team";
 import Portfolio from "../components/Portfolio/Portfolio";
 import BottomHero from "../components/BottomHero/BottomHero";
 import Footer from "../components/Footer/Footer";
+import SectionReveal from "../components/SectionReveal/SectionReveal";
 
 export default function Home() {
   return (
     <main>
       <Header />
       <Hero />
-      <Approach />
-      <Testimonials />
-      <Innovation />
-      <Team />
-      <Portfolio />
-      <BottomHero />
+      <SectionReveal>
+        <Approach />
+      </SectionReveal>
+      <SectionReveal>
+        <Testimonials />
+      </SectionReveal>
+      <SectionReveal>
+        <Innovation />
+      </SectionReveal>
+      <SectionReveal>
+        <Team />
+      </SectionReveal>
+      <SectionReveal>
+        <Portfolio />
+      </SectionReveal>
+      <SectionReveal>
+        <BottomHero />
+      </SectionReveal>
       <Footer />
     </main>
   );

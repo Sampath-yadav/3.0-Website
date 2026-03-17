@@ -146,6 +146,45 @@
     }
 
     .hero {
-        padding-top: 140px;
+        padding: 140px 16px 60px;
+    }
+
+    .description {
+        font-size: 16px;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 40px;
+    }
+
+    .visual {
+        border-radius: 14px;
+    }
+
+    .glassFrame {
+        border-radius: 14px;
+        padding: 6px;
+        border-width: 2px;
+    }
+
+    .soundBtn {
+        bottom: 8px;
+        right: 8px;
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 26px;
+        letter-spacing: -0.8px;
+    }
+
+    .hero {
+        padding: 120px 12px 40px;
+    }
+
+    .description {
+        font-size: 14px;
     }
 }

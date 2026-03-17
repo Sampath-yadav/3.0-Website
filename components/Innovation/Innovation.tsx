@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import styles from './Innovation.module.css';
 
 const services = [
@@ -54,10 +57,17 @@ const Innovation = () => {
 
                 <div className={styles.grid}>
                     {services.map((service, index) => (
-                        <div key={index} className={`${styles.card} ${styles[service.type]}`}>
+                        <motion.div
+                            key={index}
+                            className={`${styles.card} ${styles[service.type]}`}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: '-40px' }}
+                            transition={{ duration: 0.5, delay: index * 0.15 }}
+                        >
                             <div className={styles.cardIcon}>{service.icon}</div>
                             <h3 className={styles.serviceTitle}>{service.title}</h3>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 

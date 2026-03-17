@@ -202,16 +202,72 @@
 }
 
 @media (max-width: 768px) {
+    .innovation {
+        padding: 40px 12px;
+    }
+
     .grid {
         grid-template-columns: 1fr;
     }
 
     .title {
         font-size: 32px;
+        letter-spacing: -1px;
     }
 
     .mainContainer {
         padding: 40px 20px;
-        border-radius: 30px;
+        border-radius: 20px;
+        min-height: auto;
+    }
+
+    .card {
+        padding: 28px;
+        min-height: 180px;
+    }
+
+    .banner {
+        padding: 28px 20px;
+        border-radius: 16px;
+    }
+
+    .bannerText h3 {
+        font-size: 18px;
+    }
+
+    .bannerText p {
+        font-size: 15px;
+    }
+
+    .bannerActions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btnPillWhite,
+    .btnPillOutline {
+        width: 100%;
+        justify-content: center;
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 26px;
+    }
+
+    .mainContainer {
+        padding: 28px 14px;
+    }
+
+    .card {
+        padding: 20px;
+        min-height: 160px;
+    }
+
+    .serviceTitle {
+        font-size: 17px;
     }
 }

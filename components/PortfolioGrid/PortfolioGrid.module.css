@@ -84,8 +84,22 @@
 }
 
 @media (max-width: 768px) {
+    .section {
+        padding: 24px 0 32px;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .title {
+        font-size: 28px;
+        letter-spacing: -1px;
+    }
+
     .grid {
         grid-template-columns: 1fr;
+        gap: 40px;
     }
 
     .header {
@@ -93,6 +107,16 @@
     }
 
     .imageWrapper {
-        border-radius: 1.5rem;
+        border-radius: 1rem;
+    }
+
+    .cardTitle {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 24px;
     }
 }

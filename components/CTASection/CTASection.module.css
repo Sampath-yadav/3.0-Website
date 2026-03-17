@@ -92,14 +92,35 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 96px 24px;
+    padding: 80px 16px;
   }
 
   .heading {
     font-size: 32px;
+    letter-spacing: -1px;
   }
 
   .description {
     font-size: 16px;
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 60px 14px;
+  }
+
+  .heading {
+    font-size: 26px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 240px;
   }
 }

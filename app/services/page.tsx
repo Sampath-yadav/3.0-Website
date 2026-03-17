@@ -140,11 +140,11 @@ export default function ServicesPage() {
         {/* SERVICES */}
 
         <section className="max-w-[960px] mx-auto py-20 px-6">
-          <div ref={servicesRef} className="flex relative">
+          <div ref={servicesRef} className="flex flex-col md:flex-row relative">
 
-            {/* LEFT MENU */}
+            {/* LEFT MENU (Desktop) */}
 
-            <div className="w-[170px] shrink-0 sticky top-[100px] h-fit">
+            <div className="hidden md:block w-[170px] shrink-0 sticky top-[100px] h-fit">
 
               <ul className="space-y-44">
 
@@ -168,9 +168,23 @@ export default function ServicesPage() {
 
             </div>
 
-            {/* TRACKER */}
+            {/* MOBILE MENU */}
+            <div className="flex md:hidden gap-2 mb-8 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-hide">
+              {SECTIONS.map((section, i) => (
+                <button
+                  key={section.id}
+                  onClick={() => scrollToSection(i)}
+                  className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors shrink-0
+                    ${activeIndex === i ? "bg-[#E8573A] text-white" : "bg-gray-100 text-gray-500"}`}
+                >
+                  {section.label}
+                </button>
+              ))}
+            </div>
 
-            <div className="relative mx-8" style={{ width: LINE_WIDTH }}>
+            {/* TRACKER (Desktop) */}
+
+            <div className="relative mx-8 hidden md:block" style={{ width: LINE_WIDTH }}>
 
               <div className="absolute top-0 left-0 h-full w-full bg-gray-300 rounded-full" />
 
@@ -195,7 +209,7 @@ export default function ServicesPage() {
                   ref={(el) => {
                     sectionRefs.current[i] = el;
                   }}
-                  className="pb-20 scroll-mt-16 max-w-sm"
+                  className="pb-20 scroll-mt-16 md:max-w-sm"
                 >
 
                   <h2 className="text-xl font-bold mb-4">

@@ -43,7 +43,7 @@ export default function TeamsPage() {
           <div className="max-w-[1200px] mx-auto px-6 grid md:grid-cols-2 gap-24 items-start">
 
             {/* LEFT DIRECTORS */}
-            <div className="flex gap-14">
+            <div className="flex flex-col sm:flex-row gap-8 sm:gap-14 items-center">
 
               {/* Director 1 */}
               <div className="text-center">
@@ -98,11 +98,11 @@ export default function TeamsPage() {
             {/* RIGHT TEXT */}
             <div className="text-center md:text-left mt-16">
 
-              <h1 className="text-[45px] font-medium leading-[1.1] tracking-tight text-[#1a1a1a]">
+              <h1 className="text-[32px] sm:text-[45px] font-medium leading-[1.1] tracking-tight text-[#1a1a1a]">
                 Meet the creative minds
               </h1>
 
-              <h2 className="text-[45px] mt-4 font-medium text-[#1a1a1a]">
+              <h2 className="text-[32px] sm:text-[45px] mt-4 font-medium text-[#1a1a1a]">
                 Our Directors
               </h2>
 

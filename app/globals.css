@@ -222,6 +222,28 @@
   transform: none;
 }
 
+/* Scrollbar hide utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Responsive touch improvements */
+@media (max-width: 768px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 /* Hide Next.js/Vercel/Netlify Dev Badges/Indicators */
 #__next-build-watcher,
 [data-nextjs-toast-wrapper],

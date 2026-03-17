@@ -26,7 +26,7 @@ export default function BlueCrossPage() {
 
       <main className="pt-24 relative z-10">
         {/* ===== HERO SECTION ===== */}
-        <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+        <section className="relative min-h-[50vh] md:min-h-[70vh] flex items-center overflow-hidden">
           {/* Paw prints decoration */}
           <img
             src="/bluegross images/mdi_paw.png"
@@ -46,7 +46,7 @@ export default function BlueCrossPage() {
 
           <div className="max-w-[1400px] mx-auto px-8 w-full grid md:grid-cols-2 gap-12 items-center">
             {/* Left — Title */}
-            <div className="w-full max-w-[845px] h-[200px] flex flex-col justify-center relative z-20">
+            <div className="w-full max-w-[845px] h-auto md:h-[200px] flex flex-col justify-center relative z-20">
               <h1
                 className="text-[#44b9fe] font-bold leading-[0.9] tracking-tighter"
                 style={{
@@ -69,7 +69,7 @@ export default function BlueCrossPage() {
                 />
               </div>
 
-              <div className="absolute top-[20%] left-0 w-[299.48px] h-[299.48px] opacity-100 rotate-[-15deg]">
+              <div className="absolute top-[20%] left-0 w-[150px] h-[150px] md:w-[299.48px] md:h-[299.48px] opacity-100 rotate-[-15deg]">
                 <Image
                   src="/bluegross images/mdi_paw.png"
                   alt=""
@@ -87,7 +87,7 @@ export default function BlueCrossPage() {
                 className="relative z-10 drop-shadow-2xl"
               />
               <motion.div
-                className="absolute -bottom-4 -right-12 z-20 w-[525px] h-[284px]"
+                className="absolute -bottom-4 -right-4 md:-right-12 z-20 w-[280px] h-[152px] md:w-[525px] md:h-[284px]"
                 animate={{
                   rotate: [0, -1, 1, 0],
                   scale: [1, 1.01, 1]
@@ -115,10 +115,10 @@ export default function BlueCrossPage() {
         </section>
 
         {/* ===== DOG + BEAGLE IMAGE SECTION ===== */}
-        <section className="relative pt-8 pb-0 overflow-">
-          <div className="w-full px-0 -mt-32">
+        <section className="relative pt-8 pb-0 overflow-hidden">
+          <div className="w-full px-0 -mt-32 md:-mt-32 -mt-16">
             <div className="flex justify-start">
-              <div className="relative w-[527px] h-[496px]">
+              <div className="relative w-[300px] h-[280px] md:w-[527px] md:h-[496px]">
                 <Image
                   src="/bluegross images/image 341.png"
                   alt="Beagle dog"
@@ -134,11 +134,11 @@ export default function BlueCrossPage() {
         <section className="pt-4 pb-12 bg-white">
           <div className="max-w-[1272px] mx-auto px-6">
 
-            {/* Top Row — Field Staff 840x480 + Vet Doctors 408x480 */}
-            <div className="relative grid gap-6" style={{ gridTemplateColumns: '840px 408px' }}>
+            {/* Top Row — Field Staff + Vet Doctors */}
+            <div className="relative grid gap-6 grid-cols-1 md:grid-cols-[2fr_1fr]">
 
-              {/* Field Staff Card — 840x480 */}
-              <div className="rounded-2xl overflow-hidden relative" style={{ height: 480 }}>
+              {/* Field Staff Card */}
+              <div className="rounded-2xl overflow-hidden relative h-[320px] md:h-[480px]">
                 <Image
                   src="/bluegross images/image.png"
                   alt="Field Staff"
@@ -164,8 +164,8 @@ export default function BlueCrossPage() {
                 </div>
               </div>
 
-              {/* Veterinary Doctors Card — 408x480 */}
-              <div className="relative h-[480px]">
+              {/* Veterinary Doctors Card */}
+              <div className="relative h-auto md:h-[480px]">
                 {/* Dogs peeking — overlaps above right column */}
                 <div className="absolute -top-[82px] left-1/2 -translate-x-1/2 w-[340px] z-20 md:block hidden">
                   <Image
@@ -203,11 +203,11 @@ export default function BlueCrossPage() {
               </div>
             </div>
 
-            {/* Bottom Row — Management 408x480 + Reporting 840x480 */}
-            <div className="grid gap-6 mt-6" style={{ gridTemplateColumns: '408px 840px' }}>
+            {/* Bottom Row — Management + Reporting */}
+            <div className="grid gap-6 mt-6 grid-cols-1 md:grid-cols-[1fr_2fr]">
 
-              {/* Management & Admin Card — 408x472 */}
-              <div className="rounded-2xl bg-black p-5 flex flex-col" style={{ height: 472 }}>
+              {/* Management & Admin Card */}
+              <div className="rounded-2xl bg-black p-5 flex flex-col min-h-[320px] md:min-h-[472px]">
                 <span className="text-white/50 text-[11px] font-medium tracking-widest uppercase">
                   Management & Admin
                 </span>
@@ -225,8 +225,8 @@ export default function BlueCrossPage() {
                 </div>
               </div>
 
-              {/* Reporting & Tracking Card — 840x472 */}
-              <div className="rounded-2xl bg-[#f5f5f5] p-8 md:p-10 flex flex-col justify-between" style={{ height: 472 }}>
+              {/* Reporting & Tracking Card */}
+              <div className="rounded-2xl bg-[#f5f5f5] p-6 md:p-10 flex flex-col justify-between min-h-[320px] md:min-h-[472px]">
                 <div>
                   <span className="text-gray-400 text-[11px] font-medium tracking-widest uppercase">
                     Reporting & Tracking
@@ -247,7 +247,7 @@ export default function BlueCrossPage() {
         <section className="py-24 overflow-hidden relative">
           <div className="max-w-[1200px] mx-auto px-8">
             {/* Language badges */}
-            <div className="flex justify-center items-end gap-16 mb-8 relative z-30">
+            <div className="flex justify-center items-end gap-4 md:gap-16 mb-8 relative z-30">
               {phones.map((phone, idx) => (
                 <button
                   key={phone.id}
@@ -281,7 +281,7 @@ export default function BlueCrossPage() {
             </div>
 
             {/* Phone mockups container */}
-            <div className="relative flex justify-center items-end h-[600px] overflow-hidden mt-4">
+            <div className="relative flex justify-center items-end h-[400px] md:h-[600px] overflow-hidden mt-4">
               {/* Repeating text background */}
               <div className="absolute inset-0 flex flex-col justify-center items-center overflow-hidden opacity-[0.1] pointer-events-none select-none">
                 {Array.from({ length: 12 }).map((_, i) => (
@@ -343,7 +343,7 @@ export default function BlueCrossPage() {
         {/* ===== IOS AND ANDROID SECTION ===== */}
         <section className="py-20">
           <div className="max-w-[1000px] mx-auto px-8">
-            <div className="bg-gray-100 rounded-3xl p-12 min-h-[250px] flex flex-col justify-center">
+            <div className="bg-gray-100 rounded-2xl md:rounded-3xl p-8 md:p-12 min-h-[200px] md:min-h-[250px] flex flex-col justify-center">
               <h3 className="text-2xl font-semibold text-gray-900">
                 Support for both iOS and
               </h3>
