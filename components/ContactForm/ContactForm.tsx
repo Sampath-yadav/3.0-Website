@@ -24,24 +24,18 @@ export default function ContactForm() {
       <div className={styles.container}>
         {/* Header Section */}
         <div className={styles.header}>
-          <div className={styles.eyebrow}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M12 2L12 22M2 12L22 12M5 5l14 14M5 19L19 5" strokeLinecap="round" />
-            </svg>
-            GET IN TOUCH
-          </div>
           <h1 className={styles.heading}>
-            Let's Start Your <span className={styles.highlightText}>Digital Transformation</span>
+            Let's Build Your <span className={styles.highlightText}>Next Product</span>
           </h1>
           <p className={styles.subtext}>
-            Whether you're planning a CMS migration, launching a DXP, or exploring AI automation — our consultants are ready to help you chart the right course.
+            Whether you need a full-stack app, an AI workflow, or an autonomous agent — our product engineers are ready to turn your idea into reality.
           </p>
         </div>
 
         <div className={styles.mainGrid}>
           {/* Left Column: Form */}
           <div className={styles.formBox}>
-            <h2 className={styles.boxHeading}>Book a Free Consultation</h2>
+            <h2 className={styles.boxHeading}>Start a Conversation</h2>
             <form className={styles.form} onClick={(e) => e.preventDefault()}>
               <div className={styles.row}>
                 <div className={styles.field}>
@@ -78,13 +72,13 @@ export default function ContactForm() {
                 <label className={styles.label}>Tell us about your project</label>
                 <textarea
                   rows={4}
-                  placeholder="Briefly describe your digital platform challenge or initiative..."
+                  placeholder="Tell us about your idea, challenge, or what you'd like to build..."
                   className={styles.textarea}
                 />
               </div>
 
               <button className={styles.submitBtn}>
-                Request Consultation
+                Send Message
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -100,14 +94,14 @@ export default function ContactForm() {
           <div className={styles.infoCol}>
             {/* Benefits List */}
             <div className={styles.infoSection}>
-              <h3 className={styles.infoHeading}>Why Book a Consultation?</h3>
+              <h3 className={styles.infoHeading}>Why Work With Us?</h3>
               <div className={styles.benefitList}>
                 {[
-                  "45-minute focused strategy session with a principal architect",
-                  "Platform audit and gap analysis — no cost, no obligation",
-                  "Tailored digital roadmap based on your business context",
-                  "Recommendations on CMS, DXP, or AI technology stack",
-                  "Engagement model options: project, retainer, or augmentation"
+                  "Product-first thinking — we build what matters, not just what's asked",
+                  "Full-stack apps, AI workflows, and autonomous agents under one roof",
+                  "Rapid iteration cycles with founder-level involvement",
+                  "No obligation — just a conversation about your idea",
+                  "Flexible engagement: project-based, retainer, or team augmentation"
                 ].map((item, idx) => (
                   <div key={idx} className={styles.benefitItem}>
                     <div className={styles.dot} />
