@@ -64,13 +64,7 @@ const Portfolio = () => {
                     {projects.map((project, index) => {
                         const content = (
                             <>
-                                <div
-                                    className={styles.imgWrapper}
-                                    style={{
-                                        maxWidth: `${project.width}px`,
-                                        aspectRatio: `${project.width}/${project.height}`
-                                    }}
-                                >
+                                <div className={styles.imgWrapper}>
                                     <img src={project.image} alt={project.title} />
                                 </div>
                                 <h4 className={styles.projTitle}>{project.title}</h4>
