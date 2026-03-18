@@ -35,6 +35,12 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
+.logoImg {
+    height: 27px;
+    width: auto;
+    display: block;
+}
+
 /* Nav Links */
 .navGroup {
     display: flex;

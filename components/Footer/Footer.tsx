@@ -10,13 +10,6 @@ const Footer = () => {
 
     const socials = [
         {
-            id: 'x',
-            label: 'X',
-            icon: (
-                <span className={styles.xIcon}>𝕏</span>
-            )
-        },
-        {
             id: 'linkedin',
             label: 'LinkedIn',
             icon: (
@@ -54,9 +47,6 @@ const Footer = () => {
 
     const handleIconClick = (e: React.MouseEvent, id: string) => {
         e.preventDefault();
-
-        // If clicking X, do nothing
-        if (id === 'x') return;
 
         // LinkedIn should redirect directly
         if (id === 'linkedin') {
@@ -121,7 +111,7 @@ const Footer = () => {
                             {socials.map((social) => (
                                 <button
                                     key={social.id}
-                                    className={`${styles.socialIcon} ${activeSocialId === social.id ? styles.active : ''} ${social.id === 'x' ? styles.nonInteractive : ''}`}
+                                    className={`${styles.socialIcon} ${activeSocialId === social.id ? styles.active : ''}`}
                                     onClick={(e) => handleIconClick(e, social.id)}
                                     aria-label={social.label}
                                 >

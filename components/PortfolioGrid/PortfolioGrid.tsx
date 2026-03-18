@@ -10,9 +10,11 @@ const projects = [
     },
     {
         id: 2,
-        title: 'VITS',
-        image: '/portfolioimages/VITS 1.png',
+        title: 'VDTS',
+        image: '/portfolioimages/VITS (1).png',
         href: '/portfolio/vits',
+        width: 1280,
+        height: 800,
     },
     {
         id: 3,

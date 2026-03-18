@@ -139,19 +139,19 @@ export default function ContactForm() {
 
             {/* Offices */}
             <div className={styles.infoSection}>
-              <h4 className={styles.officeLabel}>Our Office</h4>
-              <div className={styles.officeGrid}>
+              <h3 className={styles.infoHeading}>Our Office</h3>
+              <div className={styles.officeList}>
                 {[
-                  { name: "India ", address: "Fourth Floor, 604, Ace Monte Carlo, x Roads, beside TCS Kohinoor Park, Land Mark Residency, Kothaguda, Hyderabad, Telangana 500084" },
+                  { name: "India", address: "Fourth Floor, 604, Ace Monte Carlo, x Roads, beside TCS Kohinoor Park, Land Mark Residency, Kothaguda, Hyderabad, Telangana 500084" },
                 ].map((office, idx) => (
                   <div key={idx} className={styles.officeCard}>
-                    <div className={styles.officeName}>
+                    <div className={styles.officeHeader}>
                       <span className={styles.officeIcon}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" />
                         </svg>
                       </span>
-                      {office.name}
+                      <span className={styles.officeName}>{office.name}</span>
                     </div>
                     <p className={office.address ? styles.officeAddress : "hidden"}>{office.address}</p>
                   </div>

@@ -107,7 +107,7 @@ const LogoBurst = () => {
             {Array.from({ length: LOGO_COUNT }).map((_, i) => (
                 <img
                     key={i}
-                    src="/images/logos/logo.png"
+                    src="/images/logos/bruh(1)1.svg"
                     alt=""
                     className={styles.miniLogo}
                 />

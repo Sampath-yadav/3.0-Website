@@ -19,11 +19,9 @@ const Icon01 = () => (
         <stop offset="100%" stopColor="#ff9d6c" stopOpacity="0.1" />
       </linearGradient>
     </defs>
-    {/* Starfleet delta / problem-space symbol */}
     <path d="M60 8 L92 88 L60 72 L28 88 Z" fill="url(#g01a)" />
     <path d="M60 8 L92 88 L60 72 Z" fill="rgba(0,0,0,0.12)" />
     <path d="M60 72 L28 88 L60 52 Z" fill="rgba(255,255,255,0.15)" />
-    {/* Drop shadow ellipse */}
     <ellipse cx="60" cy="94" rx="28" ry="4" fill="rgba(255,92,53,0.18)" />
   </svg>
 );
@@ -36,11 +34,9 @@ const Icon02 = () => (
         <stop offset="100%" stopColor="#ff9d6c" />
       </linearGradient>
     </defs>
-    {/* Decision ring */}
     <circle cx="60" cy="50" r="36" stroke="url(#g02)" strokeWidth="7" />
     <circle cx="60" cy="50" r="18" fill="url(#g02)" />
     <circle cx="60" cy="50" r="10" fill="white" />
-    {/* Tick marks at 12, 3, 6, 9 */}
     {[0, 90, 180, 270].map((deg, i) => {
       const r = (deg * Math.PI) / 180;
       const x1 = 60 + 38 * Math.sin(r);
@@ -69,12 +65,8 @@ const Icon03 = () => (
         <stop offset="100%" stopColor="#ff7a55" />
       </linearGradient>
     </defs>
-    {/* Isometric cube */}
-    {/* Top face */}
     <path d="M60 14 L88 30 L60 46 L32 30 Z" fill="url(#g03t)" />
-    {/* Left face */}
     <path d="M32 30 L60 46 L60 78 L32 62 Z" fill="url(#g03l)" />
-    {/* Right face */}
     <path d="M88 30 L60 46 L60 78 L88 62 Z" fill="url(#g03r)" />
     <ellipse cx="60" cy="92" rx="24" ry="4" fill="rgba(255,92,53,0.18)" />
   </svg>
@@ -88,7 +80,6 @@ const Icon04 = () => (
         <stop offset="100%" stopColor="#ff9d6c" />
       </linearGradient>
     </defs>
-    {/* Bold right-pointing arrow */}
     <path
       d="M14 50 L74 50 M74 50 L52 28 M74 50 L52 72"
       stroke="url(#g04)"
@@ -96,7 +87,6 @@ const Icon04 = () => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    {/* Speed lines behind */}
     <line x1="14" y1="38" x2="44" y2="38" stroke="#ff9d6c" strokeWidth="3.5" strokeLinecap="round" strokeOpacity="0.45" />
     <line x1="8" y1="50" x2="34" y2="50" stroke="#ff9d6c" strokeWidth="3.5" strokeLinecap="round" strokeOpacity="0.3" />
     <line x1="14" y1="62" x2="44" y2="62" stroke="#ff9d6c" strokeWidth="3.5" strokeLinecap="round" strokeOpacity="0.45" />
@@ -116,12 +106,10 @@ const Icon05 = () => (
         <stop offset="100%" stopColor="#ff5c35" stopOpacity="0.6" />
       </linearGradient>
     </defs>
-    {/* Geometric crystal / diamond */}
     <path d="M60 10 L90 45 L60 88 L30 45 Z" fill="url(#g05a)" />
     <path d="M60 10 L90 45 L60 47 Z" fill="rgba(255,255,255,0.2)" />
     <path d="M30 45 L60 47 L60 88 Z" fill="rgba(0,0,0,0.1)" />
     <path d="M60 10 L30 45 L60 47 Z" fill="rgba(255,255,255,0.1)" />
-    {/* Facet lines */}
     <line x1="30" y1="45" x2="90" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
     <line x1="60" y1="10" x2="60" y2="88" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
     <ellipse cx="60" cy="93" rx="26" ry="4" fill="rgba(255,92,53,0.18)" />
@@ -136,7 +124,6 @@ const Icon06 = () => (
         <stop offset="100%" stopColor="#ff9d6c" />
       </linearGradient>
     </defs>
-    {/* Circle with checkmark */}
     <circle cx="60" cy="48" r="34" fill="url(#g06)" opacity="0.15" />
     <circle cx="60" cy="48" r="34" stroke="url(#g06)" strokeWidth="3" />
     <path
@@ -146,7 +133,6 @@ const Icon06 = () => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    {/* Sparkles */}
     <circle cx="20" cy="22" r="3.5" fill="#ff9d6c" opacity="0.7" />
     <circle cx="100" cy="18" r="2.5" fill="#ff5c35" opacity="0.6" />
     <circle cx="106" cy="72" r="3" fill="#ff9d6c" opacity="0.5" />
@@ -206,14 +192,9 @@ export default function Approach() {
   const sectionRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const fillRef = useRef<HTMLDivElement>(null);
   const connectorFillRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const accentRefs = useRef<(HTMLDivElement | null)[]>([]);
   const dotRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const descRefs = useRef<(HTMLParagraphElement | null)[]>([]);
-  const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     setMounted(true);
@@ -230,76 +211,64 @@ export default function Approach() {
     const N = steps.length;
     const STEPS = N - 1;
 
-    // Refresh ScrollTrigger after page transition animation completes
     const refreshTimer = setTimeout(() => ScrollTrigger.refresh(), 800);
 
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
-      // DESKTOP & TABLET: Premium Pinning Animation
+      // DESKTOP & TABLET
       mm.add("(min-width: 769px)", () => {
-        /* ── Initial states ─────────────────────────────────────── */
+        /* ── Initial states ── */
         cardRefs.current.forEach((card, i) => {
           if (!card) return;
           gsap.set(card, {
-            scale: 1,
-            opacity: i === 0 ? 1 : 0.6,
-            y: 0,
+            opacity: i === 0 ? 1 : 0.35,
+            y: i === 0 ? 0 : 20,
+            scale: i === 0 ? 1 : 0.92,
           });
-
-          if (i > 0) {
-            const content = contentRefs.current[i];
-            if (content) {
-              gsap.set(content, { height: 0, opacity: 0, visibility: 'hidden' });
-            }
-          }
         });
 
-        if (fillRef.current) gsap.set(fillRef.current, { scaleX: 0, transformOrigin: 'left center' });
         if (connectorFillRef.current) gsap.set(connectorFillRef.current, { scaleX: 0, transformOrigin: 'left center' });
 
-        /* ── Animated Timeline ─────────────────────────────────── */
+        /* ── Animated Timeline ── */
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
             start: 'top top',
             end: () => `+=${STEPS * window.innerHeight * 1.2}`,
             pin: true,
-            scrub: 2,
+            scrub: 0.8,
             onUpdate: (self) => {
               const rawIndex = self.progress * STEPS;
+
               cardRefs.current.forEach((card, i) => {
                 if (!card) return;
                 const dist = Math.abs(i - rawIndex);
-                const isActive = dist < 0.3;
+                // Smooth interpolation: 1 at center, 0 at dist=1.5
+                const proximity = Math.max(0, 1 - dist / 1.5);
+                const isActive = dist < 0.5;
 
-                gsap.set(card, {
-                  scale: isActive ? 1.03 : 0.97,
-                  opacity: isActive ? 1 : 0.5,
-                  y: isActive ? -10 : 0,
+                gsap.to(card, {
+                  opacity: 0.35 + proximity * 0.65,
+                  scale: 0.92 + proximity * 0.08,
+                  y: isActive ? -8 : 20 * (1 - proximity),
+                  boxShadow: isActive
+                    ? '0 20px 60px rgba(178, 33, 90, 0.15), 0 8px 24px rgba(255, 92, 53, 0.1)'
+                    : '0 4px 16px rgba(0, 0, 0, 0.04)',
+                  duration: 0.3,
+                  overwrite: 'auto',
                 });
-
-                if (i > 0) {
-                  const content = contentRefs.current[i];
-                  if (content) {
-                    const isOpen = dist < 0.3;
-
-                    gsap.set(content, {
-                      height: isOpen ? 'auto' : 0,
-                      opacity: isOpen ? 1 : 0,
-                      visibility: isOpen ? 'visible' : 'hidden',
-                      marginTop: isOpen ? 20 : 0
-                    });
-                  }
-                }
               });
 
               dotRefs.current.forEach((dot, i) => {
                 if (!dot) return;
                 const dist = Math.abs(i - rawIndex);
-                gsap.set(dot, {
-                  backgroundColor: dist < 0.4 ? '#B2215A' : '#d4d4d4',
-                  scale: dist < 0.4 ? 1.6 : 1,
+                const isActive = dist < 0.5;
+                gsap.to(dot, {
+                  backgroundColor: isActive ? '#B2215A' : '#d4d4d4',
+                  scale: isActive ? 1.8 : 1,
+                  duration: 0.3,
+                  overwrite: 'auto',
                 });
               });
             }
@@ -308,44 +277,26 @@ export default function Approach() {
 
         const track = trackRef.current;
         if (track) tl.to(track, { x: () => -(STEPS * window.innerWidth * 0.5), ease: 'none' });
-        if (fillRef.current) tl.to(fillRef.current, { scaleX: 1, ease: 'none' }, 0);
         if (connectorFillRef.current) tl.to(connectorFillRef.current, { scaleX: 1, ease: 'none' }, 0);
       });
 
-      // MOBILE: Native Scroll with Simplified Fades
+      // MOBILE
       mm.add("(max-width: 768px)", () => {
-        // Ensure initial state for mobile
-        cardRefs.current.forEach((card, i) => {
+        cardRefs.current.forEach((card) => {
           if (!card) return;
-          gsap.set(card, {
-            scale: 1,
-            opacity: 1,
-            y: 0,
-            x: 0
-          });
-
-          const content = contentRefs.current[i];
-          if (content) {
-            gsap.set(content, {
-              height: 'auto',
-              opacity: 1,
-              visibility: 'visible',
-              marginTop: 20
-            });
-          }
+          gsap.set(card, { scale: 1, opacity: 1, y: 0, x: 0 });
         });
 
-        // Simplified interaction for mobile - cards reveal as they scroll horizontally
-        cardRefs.current.forEach((card, i) => {
+        cardRefs.current.forEach((card) => {
           if (!card) return;
           gsap.fromTo(card,
-            { opacity: 0.4, scale: 0.9 },
+            { opacity: 0.4, scale: 0.92 },
             {
               opacity: 1,
               scale: 1,
               scrollTrigger: {
                 trigger: card,
-                containerAnimation: undefined, // Native scroll
+                containerAnimation: undefined,
                 scroller: trackRef.current?.parentElement || window,
                 horizontal: true,
                 start: 'left 80%',
@@ -383,7 +334,7 @@ export default function Approach() {
       <div className={styles.stage}>
         <div ref={trackRef} className={styles.track}>
 
-          {/* Connector line — moves with track, fills as you scroll */}
+          {/* Connector line */}
           <div className={styles.connectorWrap}>
             <div className={styles.connectorBg} />
             <div ref={connectorFillRef} className={styles.connectorFill} />
@@ -395,14 +346,7 @@ export default function Approach() {
                 ref={el => { cardRefs.current[i] = el; }}
                 className={styles.card}
               >
-
-                {/* Active left accent bar */}
-                <div
-                  ref={el => { accentRefs.current[i] = el; }}
-                  className={styles.accentBar}
-                />
-
-                {/* Content */}
+                {/* Step number + title */}
                 <div className={styles.cardTop}>
                   <div className={styles.titleRow}>
                     <span className={styles.badge}>{id}</span>
@@ -410,24 +354,10 @@ export default function Approach() {
                   </div>
                 </div>
 
-                {/* Collapsible Content */}
-                <div
-                  ref={el => { contentRefs.current[i] = el; }}
-                  className={styles.cardContent}
-                  style={i === 0 ? { height: 'auto', opacity: 1, visibility: 'visible' } : {}}
-                >
-                  <p
-                    ref={el => { descRefs.current[i] = el; }}
-                    className={styles.cardDesc}
-                  >
-                    {description}
-                  </p>
-
-                  {/* Icon illustration */}
-                  <div
-                    ref={el => { iconRefs.current[i] = el; }}
-                    className={styles.iconWrap}
-                  >
+                {/* Always visible content */}
+                <div className={styles.cardContent}>
+                  <p className={styles.cardDesc}>{description}</p>
+                  <div className={styles.iconWrap}>
                     <Icon />
                   </div>
                 </div>
@@ -437,11 +367,10 @@ export default function Approach() {
         </div>
       </div>
 
-      {/* Progress bar */}
+      {/* Progress dots */}
       <div className={styles.progressWrap}>
         <div className={styles.rail}>
-          <div ref={fillRef} className={styles.fill} />
-          {steps.map((step, i) => (
+          {steps.map((_, i) => (
             <div
               key={i}
               className={styles.dotWrap}

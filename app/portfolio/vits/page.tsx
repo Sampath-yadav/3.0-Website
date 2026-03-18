@@ -22,7 +22,7 @@ export default function VITSPage() {
         <div className="space-y-8">
           <div className="space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-neutral-900">
-              VITS
+              VDTS
             </h1>
             <p className="text-lg text-neutral-600 max-w-2xl">
               A comprehensive view of the intelligent systems we've engineered for our clients.
@@ -31,7 +31,7 @@ export default function VITSPage() {
           
           <div className="rounded-3xl overflow-hidden border border-neutral-200 bg-neutral-50 shadow-2xl">
             <img 
-              src="/portfolioimages/VITS 1.png" 
+              src="/portfolioimages/VITS (1).png" 
               alt="VITS Showcase" 
               className="w-full h-auto object-cover"
             />

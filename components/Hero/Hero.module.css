@@ -100,35 +100,166 @@
     position: relative;
 }
 
-.heroVideo {
+/* Animated Showcase */
+.animatedShowcase {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.soundBtn {
-    position: absolute;
-    bottom: 14px;
-    right: 14px;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(6px);
-    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.15s ease;
-    z-index: 10;
+    background: #fafafa;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
 }
 
-.soundBtn:hover {
-    background: rgba(255, 140, 107, 0.75);
-    transform: scale(1.1);
+.scene {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    position: absolute;
+    inset: 0;
+}
+
+.sceneLabel {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #999;
+}
+
+.sceneHeading {
+    font-size: clamp(22px, 3.5vw, 38px);
+    font-weight: 700;
+    color: #111;
+    text-align: center;
+    letter-spacing: -1px;
+    line-height: 1.2;
+}
+
+.sceneLine {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff8c6b, #d94e63);
+    border-radius: 4px;
+    transform-origin: left;
+}
+
+.sceneSubtext {
+    font-size: 14px;
+    color: #888;
+    font-weight: 500;
+}
+
+/* Logo */
+.logoImage {
+    width: 180px;
+    height: auto;
+}
+
+/* Service Cards */
+.serviceCards {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.serviceCard {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    border-radius: 16px;
+    border: 2px solid;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.serviceIcon {
+    font-size: 22px;
+}
+
+.serviceTitle {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+}
+
+/* Steps */
+.stepList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.stepItem {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 18px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.stepNumber {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ff8c6b;
+    min-width: 24px;
+}
+
+.stepText {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Project Grid */
+.projectGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    max-width: 500px;
+}
+
+.projectChip {
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: 2px solid;
+    font-size: 14px;
+    font-weight: 600;
+    background: #fff;
+}
+
+/* CTA Scene */
+.ctaHeading {
+    font-size: clamp(20px, 3vw, 34px);
+    font-weight: 700;
+    color: #111;
+    text-align: center;
+    letter-spacing: -0.5px;
+    line-height: 1.3;
+}
+
+.ctaBadge {
+    padding: 10px 28px;
+    border-radius: 40px;
+    background: #111;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 @media (max-width: 968px) {
@@ -166,11 +297,25 @@
         border-width: 2px;
     }
 
-    .soundBtn {
-        bottom: 8px;
-        right: 8px;
-        width: 30px;
-        height: 30px;
+    .serviceCards {
+        gap: 10px;
+    }
+
+    .serviceCard {
+        padding: 10px 16px;
+    }
+
+    .serviceTitle {
+        font-size: 13px;
+    }
+
+    .scene {
+        padding: 20px;
+        gap: 14px;
+    }
+
+    .stepItem {
+        padding: 8px 14px;
     }
 }
 

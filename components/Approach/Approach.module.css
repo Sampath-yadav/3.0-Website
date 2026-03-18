@@ -1,7 +1,6 @@
 /* ================================================================
    APPROACH  —  GSAP-pinned horizontal card carousel
-   GSAP ScrollTrigger handles all pinning + scrub.
-   The section is 100vh; GSAP creates its own spacer element.
+   Content always visible, smooth scroll-driven transitions
 ================================================================ */
 
 /* ── Full-screen pinned shell ───────────────────────────────── */
@@ -25,20 +24,6 @@
   z-index: 0;
   pointer-events: none;
   opacity: 0.3;
-  /* Dimmed background */
-}
-
-.fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  /* Fix: Must be 100% for scaleX to work */
-  background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-  border-radius: 2px;
-  transform: scaleX(0);
-  transform-origin: left center;
 }
 
 /* ── Section header ─────────────────────────────────────────── */
@@ -78,7 +63,6 @@
   min-height: 0;
   display: flex;
   align-items: center;
-  /* allow cards to overflow visually */
   overflow: visible;
   position: relative;
   z-index: 5;
@@ -89,20 +73,10 @@
   display: flex;
   align-items: center;
   position: relative;
-  /* needed for absolute connector  */
   will-change: transform;
 }
 
-/* ── Connector line (inside track, moves with it) ───────────── */
-/*
-  left  = 25vw  → horizontal centre of card-1 (at 50vw slot)
-  width = 250vw → spans all 5 gaps (6 cards × 50vw − first half)
-  top   = 50%   → vertical mid-point of the card area
-*/
-/*
-  left  = 25vw  → horizontal centre of card-1 (at 50vw slot)
-  width = 250vw → spans all 5 gaps (6 cards × 50vw − first half)
-*/
+/* ── Connector line ─────────────────────────────────────────── */
 .connectorWrap {
   position: absolute;
   left: 25vw;
@@ -117,8 +91,7 @@
 .connectorBg {
   position: absolute;
   inset: 0;
-  background: #fff;
-  /* Removed thin line */
+  background: #eee;
   border-radius: 100px;
 }
 
@@ -131,7 +104,6 @@
   background: linear-gradient(90deg, #FFAF68 0%, #B2215A 50%, #FFAF68 100%);
   background-size: 200% 100%;
   border-radius: 100px;
-  /* Premium Glow */
   box-shadow:
     0 0 10px rgba(255, 92, 53, 0.3),
     0 0 20px rgba(178, 33, 90, 0.15);
@@ -141,7 +113,6 @@
   overflow: hidden;
 }
 
-/* Traveling light pulse effect */
 .connectorFill::after {
   content: '';
   position: absolute;
@@ -158,32 +129,22 @@
 }
 
 @keyframes travelingPulse {
-  0% {
-    left: -100%;
-  }
-
-  100% {
-    left: 200%;
-  }
+  0% { left: -100%; }
+  100% { left: 200%; }
 }
 
-/*
-  Each cardWrapper = 50vw total (2 cards visible at once)
-  card 350px  +  left margin  +  right margin  =  50vw
-  → each margin = (50vw - 350px) / 2
-*/
+/* ── Card wrapper ───────────────────────────────────────────── */
 .cardWrapper {
   flex-shrink: 0;
-  width: 380px;
-  margin: 0 calc((50vw - 380px) / 2);
+  width: 400px;
+  margin: 0 calc((50vw - 400px) / 2);
   position: relative;
   z-index: 1;
 }
 
 /* ── Card ───────────────────────────────────────────────────── */
 .card {
-  width: 380px;
-  min-height: 60px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   background: #ffffff;
@@ -193,16 +154,15 @@
   position: relative;
   overflow: hidden;
   transform-origin: center center;
-  transition: box-shadow 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.4s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
-/* Gradient border via pseudo-element (border-image doesn't work with border-radius) */
+/* Gradient border */
 .card::before {
   content: '';
   position: absolute;
   inset: -3px;
-  /* Slightly thinner but still bold */
   border-radius: 20px;
   padding: 3px;
   background: linear-gradient(135deg, #FFAF68 0%, #B2215A 100%);
@@ -215,8 +175,7 @@
 }
 
 .cardTop {
-  padding: 24px;
-  /* Scaled down */
+  padding: 28px 28px 0;
   position: relative;
   z-index: 1;
 }
@@ -224,7 +183,7 @@
 .titleRow {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .badge {
@@ -233,38 +192,35 @@
   justify-content: center;
   font-size: 13px;
   font-weight: 700;
-  color: #111;
-  border: 1.5px solid #111;
-  border-radius: 8px;
-  width: 32px;
-  height: 32px;
+  color: #B2215A;
+  border: 2px solid #B2215A;
+  border-radius: 10px;
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .cardTitle {
-  font-size: 16px;
-  /* Scaled down */
+  font-size: 17px;
   font-weight: 700;
   color: #111;
-  line-height: 1.25;
+  line-height: 1.3;
   letter-spacing: -0.3px;
 }
 
+/* ── Always-visible card content ────────────────────────────── */
 .cardContent {
-  padding: 0 24px 24px;
-  overflow: hidden;
+  padding: 16px 28px 28px;
   display: flex;
   flex-direction: column;
 }
 
 .cardDesc {
-  font-size: 13px;
-  /* Scaled down */
+  font-size: 14px;
   color: #555;
-  line-height: 1.5;
+  line-height: 1.65;
   font-family: var(--font-secondary);
-  opacity: 0.9;
-  will-change: transform, opacity;
   margin-bottom: 16px;
 }
 
@@ -276,50 +232,31 @@
   justify-content: center;
   position: relative;
   z-index: 1;
-  padding: 4px 16px 16px;
-  will-change: transform, opacity;
+  padding: 4px 16px 8px;
 }
 
 .iconWrap svg {
   width: 90px;
-  /* Scaled down */
   height: auto;
   filter: drop-shadow(0 4px 12px rgba(255, 92, 53, 0.2));
 }
 
-/* ── Progress indicator ─────────────────────────────────────── */
+/* ── Progress dots ──────────────────────────────────────────── */
 .progressWrap {
-  display: none;
-  /* Removed progress bar indicator */
   flex-shrink: 0;
   padding: 0 80px;
   position: relative;
   z-index: 10;
-  margin-top: 24px;
+  margin-top: 40px;
   margin-bottom: 8px;
 }
 
 .rail {
   position: relative;
   height: 2px;
-  background: #fff;
-  /* Removed thin line */
+  background: #eee;
   border-radius: 2px;
   margin-bottom: 28px;
-}
-
-/* GSAP animates width from 0% → 100% */
-.fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  /* Must be 100% for scaleX to work */
-  background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-  border-radius: 2px;
-  transform: scaleX(0);
-  transform-origin: left center;
 }
 
 .dotWrap {
@@ -329,32 +266,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
 }
 
-/* GSAP sets background-color + scale directly */
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: #d4d4d4;
-  border: 2px solid #f7f5f2;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
   transform-origin: center;
-}
-
-.dotLabel {
-  position: absolute;
-  top: 14px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  color: #bbb;
-  white-space: nowrap;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* ================================================================
-   RESPONSIVE  —  disable pin, show swipeable row
+   RESPONSIVE
 ================================================================ */
 @media (max-width: 768px) {
   .section {
@@ -370,10 +296,6 @@
 
   .eyebrow {
     font-size: 22px;
-  }
-
-  .grid {
-    animation: none;
   }
 
   .stage {
@@ -394,7 +316,7 @@
   }
 
   .cardWrapper {
-    width: min(280px, 80vw);
+    width: min(300px, 82vw);
     margin: 0 8px;
   }
 
@@ -407,12 +329,16 @@
     filter: none !important;
   }
 
-  .connectorWrap {
-    display: none;
+  .cardTop {
+    padding: 20px 20px 0;
   }
 
-  .heading {
-    font-size: 36px;
+  .cardContent {
+    padding: 12px 20px 20px;
+  }
+
+  .connectorWrap {
+    display: none;
   }
 
   .progressWrap {
@@ -422,15 +348,11 @@
 
 @media (max-width: 1024px) and (min-width: 769px) {
   .cardWrapper {
-    width: 340px;
-    margin: 0 calc((50vw - 340px) / 2);
+    width: 360px;
+    margin: 0 calc((50vw - 360px) / 2);
   }
 
   .card {
-    width: 340px;
-  }
-
-  .heading {
-    font-size: 40px;
+    width: 360px;
   }
 }

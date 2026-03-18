@@ -17,9 +17,9 @@ const members = [
         shape: 'circle'
     },
     {
-        name: 'Venkatesh A',
-        role: 'Business Head',
-        image: '/images/team/team-309.png',
+        name: 'Aditya',
+        role: 'Head of Engineering',
+        image: '/team/aditya.png',
         shape: 'circle'
     },
     {

@@ -15,11 +15,19 @@ const IntroLoader = () => {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
+    // Check if intro has already been shown in this session
+    const hasBeenShown = sessionStorage.getItem("intro_shown");
+    if (hasBeenShown) {
+      setDone(true);
+      return;
+    }
+
     document.body.style.overflow = "hidden";
 
     const tl = gsap.timeline({
       onComplete: () => {
         document.body.style.overflow = "";
+        sessionStorage.setItem("intro_shown", "true");
         setDone(true);
       },
     });
@@ -133,7 +141,7 @@ const IntroLoader = () => {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
           <img
             ref={centerLogoRef}
-            src="/images/logos/logo.png"
+            src="/images/logos/intologo.png"
             alt="3.0 Labs"
             style={{
               width: "320px",
