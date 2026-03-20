@@ -14,22 +14,22 @@ const words = [
 const SCENES = [
     {
         id: 'logo',
-        duration: 3500,
+        duration: 2000,
         bg: '#fafafa',
     },
     {
         id: 'services',
-        duration: 5000,
+        duration: 3000,
         bg: '#fafafa',
     },
     {
         id: 'approach',
-        duration: 5000,
+        duration: 3000,
         bg: '#fafafa',
     },
     {
         id: 'portfolio',
-        duration: 5000,
+        duration: 3000,
         bg: '#fafafa',
     },
 ];
@@ -63,7 +63,7 @@ const Hero = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setWordIndex((prev) => (prev + 1) % words.length);
-        }, 2500);
+        }, 1500);
         return () => clearInterval(interval);
     }, []);
 

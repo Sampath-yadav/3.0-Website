@@ -238,6 +238,11 @@ export default function Approach() {
             end: () => `+=${STEPS * window.innerHeight * 1.2}`,
             pin: true,
             scrub: 0.8,
+            anticipatePin: 1,
+            fastScrollEnd: true,
+            invalidateOnRefresh: true,
+            onLeave: () => ScrollTrigger.refresh(),
+            onLeaveBack: () => ScrollTrigger.refresh(),
             onUpdate: (self) => {
               const rawIndex = self.progress * STEPS;
 

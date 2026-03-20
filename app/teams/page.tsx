@@ -51,7 +51,7 @@ export default function TeamsPage() {
       <main className="pt-32">
 
         {/* DIRECTORS SECTION */}
-        <section className="relative py-28 overflow-hidden">
+        <section className="relative py-12 md:py-28 overflow-hidden">
 
           <img
             src="/decor/star.png"
@@ -59,10 +59,10 @@ export default function TeamsPage() {
             className="absolute right-[18%] top-32 w-8"
           />
 
-          <div className="max-w-[1200px] mx-auto px-6 grid md:grid-cols-2 gap-24 items-start">
+          <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-10 md:gap-24 items-start">
 
             {/* LEFT DIRECTORS */}
-            <div className="flex flex-col sm:flex-row gap-8 sm:gap-14 items-center">
+            <div className="flex flex-row gap-6 sm:gap-14 items-center justify-center">
 
               <div className="text-center">
                 <Image
@@ -70,7 +70,7 @@ export default function TeamsPage() {
                   alt="Nithin Varma"
                   width={240}
                   height={260}
-                  className="rounded-[40px] object-cover"
+                  className="rounded-[24px] sm:rounded-[40px] object-cover w-[140px] sm:w-[180px] md:w-[240px]"
                 />
                 <p className="mt-4 font-medium text-gray-900">Nithin Varma M</p>
                 <p className="text-sm text-gray-500">Co-Founder</p>
@@ -87,7 +87,7 @@ export default function TeamsPage() {
                   alt="Sai Kiran"
                   width={240}
                   height={260}
-                  className="rounded-[40px] object-cover"
+                  className="rounded-[24px] sm:rounded-[40px] object-cover w-[140px] sm:w-[180px] md:w-[240px]"
                 />
                 <p className="mt-4 font-medium text-gray-900">Sai kiran G L</p>
                 <p className="text-sm text-gray-500">Co-Founder</p>
@@ -102,10 +102,10 @@ export default function TeamsPage() {
 
             {/* RIGHT TEXT */}
             <div className="text-center md:text-left mt-16">
-              <h1 className="text-[32px] sm:text-[45px] font-medium leading-[1.1] tracking-tight text-[#1a1a1a]">
+              <h1 className="text-2xl sm:text-3xl md:text-[45px] font-medium leading-[1.1] tracking-tight text-[#1a1a1a]">
                 Meet the creative minds
               </h1>
-              <h2 className="text-[32px] sm:text-[45px] mt-4 font-medium text-[#1a1a1a]">
+              <h2 className="text-2xl sm:text-3xl md:text-[45px] mt-4 font-medium text-[#1a1a1a]">
                 Our Directors
               </h2>
             </div>
@@ -115,7 +115,7 @@ export default function TeamsPage() {
 
 
         {/* TEAM SECTIONS */}
-        <section className="max-w-[1200px] mx-auto px-6 mt-28">
+        <section className="max-w-[1200px] mx-auto px-4 sm:px-6 mt-12 md:mt-28">
           <div>
             <p className="text-purple-600 text-sm font-medium">Our team</p>
             <h2 className="text-3xl font-semibold mt-3">Meet our team members</h2>
@@ -127,13 +127,13 @@ export default function TeamsPage() {
                 <h3 className="text-3xl font-bold text-gray-900 tracking-tight">{section.title}</h3>
                 <div className="flex-1 h-[2px] bg-gradient-to-r from-[#ff8c6b] to-transparent rounded-full" />
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-12 gap-y-16">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-4 sm:gap-x-8 md:gap-x-12 gap-y-8 md:gap-y-16">
                 {section.members.map((member) => (
                   <div
                     key={member.name}
                     className="flex flex-col items-center group"
                   >
-                    <div className="relative w-36 h-36 mb-5">
+                    <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 mb-3 md:mb-5">
                       <div className="absolute inset-0 rounded-full border-2 border-purple-100 group-hover:border-purple-300 transition-colors" />
                       <Image
                         src={member.image}
@@ -144,7 +144,7 @@ export default function TeamsPage() {
                     </div>
 
                     <div className="text-center w-full">
-                      <h4 className="font-semibold text-gray-900 text-xl leading-tight">
+                      <h4 className="font-semibold text-gray-900 text-sm sm:text-base md:text-xl leading-tight">
                         {member.name}
                       </h4>
                       <p className="text-sm text-purple-600 font-medium mt-1">
@@ -165,9 +165,9 @@ export default function TeamsPage() {
 
 
         {/* CTA SECTION */}
-        <section className="relative py-36 text-center px-6 mt-32 overflow-hidden">
+        <section className="relative py-16 md:py-36 text-center px-4 sm:px-6 mt-16 md:mt-32 overflow-hidden">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-semibold leading-tight text-gray-900">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold leading-tight text-gray-900">
               Engineering intelligent systems for
               <br />
               ambitious brands

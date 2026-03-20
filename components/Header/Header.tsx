@@ -37,12 +37,19 @@ const Header = () => {
     }, [isMenuOpen]);
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    
+    const handleLogoClick = (e: React.MouseEvent) => {
+        if (pathname === '/') {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    };
 
     return (
         <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
             <div className={styles.container}>
                 <div className={styles.logo}>
-                    <Link href="/">
+                    <Link href="/" onClick={handleLogoClick}>
                         <img src="/images/logos/intologo.png" alt="3.0 Labs" className={styles.logoImg} />
                     </Link>
                 </div>

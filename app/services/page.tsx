@@ -126,8 +126,8 @@ export default function ServicesPage() {
       >
         {/* HERO */}
 
-        <section className="relative text-center py-20 overflow-hidden">
-          <h1 className="text-5xl md:text-6xl font-semibold text-gray-900">
+        <section className="relative text-center py-10 md:py-20 overflow-hidden px-4 sm:px-6">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-semibold text-gray-900">
             Our Capabilities
           </h1>
 
@@ -139,7 +139,7 @@ export default function ServicesPage() {
 
         {/* SERVICES */}
 
-        <section className="max-w-[960px] mx-auto py-20 px-6">
+        <section className="max-w-[960px] mx-auto py-10 md:py-20 px-4 sm:px-6">
           <div ref={servicesRef} className="flex flex-col md:flex-row relative">
 
             {/* LEFT MENU (Desktop) */}
@@ -259,12 +259,12 @@ export default function ServicesPage() {
 
           </div>
         </section>
-        <section className="relative py-36 text-center px-6 mt-32 overflow-hidden">
+        <section className="relative py-16 md:py-36 text-center px-4 sm:px-6 mt-16 md:mt-32 overflow-hidden">
 
 
           <div className="max-w-3xl mx-auto">
 
-            <h2 className="text-4xl md:text-5xl font-semibold leading-tight text-gray-900">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold leading-tight text-gray-900">
               Engineering intelligent systems for
               <br />
               ambitious brands

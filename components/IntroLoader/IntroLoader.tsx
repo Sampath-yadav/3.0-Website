@@ -41,37 +41,37 @@ const IntroLoader = () => {
     tl.to(centerLogoRef.current, {
       opacity: 1,
       scale: 1,
-      duration: 1.2,
+      duration: 0.6,
       ease: "power2.out",
-    }, 0.5);
+    }, 0.3);
 
-    // 2. Wait for 1 second (Paused at center)
-    tl.to({}, { duration: 1 });
+    // 2. Wait for a short moment
+    tl.to({}, { duration: 0.4 });
 
     // 3. Move Little Upper to make room for text
     tl.to(centerLogoRef.current, {
       y: -30,
-      duration: 1.2,
+      duration: 0.6,
       ease: "power3.inOut"
     });
 
     // 4. Type the Text (Character by character)
     tl.to(".intro-char", {
       opacity: 1,
-      duration: 0.05,
-      stagger: 0.06,
+      duration: 0.03,
+      stagger: 0.04,
       ease: "none"
-    }, "-=0.2");
+    }, "-=0.1");
 
     tl.to(".intro-char-sub", {
       opacity: 1,
-      duration: 0.05,
-      stagger: 0.03,
+      duration: 0.03,
+      stagger: 0.02,
       ease: "none"
-    }, "+=0.3");
+    }, "+=0.2");
 
     // Hold to read
-    tl.to({}, { duration: 1.5 });
+    tl.to({}, { duration: 0.8 });
 
     // 5. Transition to main site
     tl.to([centerLogoRef.current, welcomeTextRef.current], {

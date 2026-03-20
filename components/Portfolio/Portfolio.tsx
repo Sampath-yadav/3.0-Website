@@ -15,7 +15,7 @@ const projects = [
     },
     {
         title: 'Blue Cross Hyderabad',
-        image: '/portfolioimages/bluegross.png',
+        image: '/svg images/Blue Cross 1.svg',
         width: 600,
         height: 400,
         href: '/portfolio/blue-cross-hyderabad'
@@ -36,7 +36,7 @@ const projects = [
     },
     {
         title: 'Bhoomibox',
-        image: '/portfolioimages/BhoomiBox 1.png',
+        image: '/svg images/BhoomiBox (1).svg',
         width: 600,
         height: 400,
         href: '/portfolio/bhoomibox'

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import IntroLoaderWrapper from "@/components/IntroLoader/IntroLoaderWrapper";
 import WavyBgAnimatorWrapper from "@/components/WavyBgAnimator/WavyBgAnimatorWrapper";
 import SplashCursor from "@/components/SplashCursor/SplashCursor";
@@ -18,13 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-<IntroLoaderWrapper />
+        <IntroLoaderWrapper />
         <SplashCursor />
-        <ScrollToTop />
         <div className="mesh-bg"></div>
         <div className="wavy-glow-left" id="wavy-left"></div>
         <div className="wavy-glow-right" id="wavy-right"></div>
-<WavyBgAnimatorWrapper />
+        <WavyBgAnimatorWrapper />
         {children}
       </body>
     </html>

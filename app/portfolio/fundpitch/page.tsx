@@ -10,7 +10,7 @@ export default function FundPitchPage() {
     <main className="relative min-h-screen bg-white">
       <Header />
       
-      <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+      <div className="pt-24 md:pt-32 pb-12 md:pb-20 px-4 sm:px-6 max-w-7xl mx-auto">
         <Link 
           href="/portfolio" 
           className="inline-flex items-center gap-2 text-neutral-500 hover:text-neutral-900 transition-colors mb-8 group"
@@ -21,7 +21,7 @@ export default function FundPitchPage() {
         
         <div className="space-y-8">
           <div className="space-y-4">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-neutral-900">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-neutral-900">
               FundPitch
             </h1>
             <p className="text-lg text-neutral-600 max-w-2xl">

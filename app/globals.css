@@ -169,13 +169,13 @@
   .wavy-glow-left.wave-active {
     opacity: 1;
     transition: opacity 1.2s ease-out;
-    animation: waveFloatLeft 18s ease-in-out infinite;
+    animation: waveFloatLeft 10s ease-in-out infinite;
   }
 
   .wavy-glow-right.wave-active {
     opacity: 1;
     transition: opacity 1.2s ease-out;
-    animation: waveFloatRight 22s ease-in-out infinite;
+    animation: waveFloatRight 12s ease-in-out infinite;
   }
 
   @keyframes waveFloatLeft {
