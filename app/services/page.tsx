@@ -71,6 +71,7 @@ const SECTIONS: Section[] = [
 
 export default function ServicesPage() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [prevIndex, setPrevIndex] = useState<number>(0);
   const [orangePx, setOrangePx] = useState<number>(0);
 
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -94,7 +95,10 @@ export default function ServicesPage() {
       if (scrollTop + trigger >= top) currentIndex = i;
     });
 
-    setActiveIndex(currentIndex);
+    setActiveIndex((prev) => {
+      if (prev !== currentIndex) setPrevIndex(prev);
+      return currentIndex;
+    });
 
     const servicesTop = servicesEl.getBoundingClientRect().top + scrollTop;
     const servicesHeight = servicesEl.offsetHeight;
@@ -115,6 +119,11 @@ export default function ServicesPage() {
   };
 
   const LINE_WIDTH = 4;
+  const DOT_SIZE = 12;
+
+  // Dot and label Y positions
+  const dotTop = Math.max(0, orangePx - DOT_SIZE / 2);
+  const labelTop = dotTop - 6; // vertically centre the label on the dot
 
   return (
     <>
@@ -131,7 +140,7 @@ export default function ServicesPage() {
             Our Capabilities
           </h1>
 
-          <p className="mt-6 text-lg max-w-3xl mx-auto bg-gradient-to-r from-[#ff4d4d] via-[#a855f7] to-[#3b82f6] bg-clip-text text-transparent font-medium">
+          <p className="mt-6 text-lg max-w-3xl mx-auto opacity-80" style={{ background: "linear-gradient(90deg,#ff4d4d,#a855f7,#3b82f6)", WebkitBackgroundClip: "text", color: "transparent" }}>
             We design and build scalable full-stack products, intelligent AI workflows,
             and autonomous agents that transform how software operates and grows.
           </p>
@@ -142,31 +151,8 @@ export default function ServicesPage() {
         <section className="max-w-[960px] mx-auto py-10 md:py-20 px-4 sm:px-6">
           <div ref={servicesRef} className="flex flex-col md:flex-row relative">
 
-            {/* LEFT MENU (Desktop) */}
-
-            <div className="hidden md:block w-[170px] shrink-0 sticky top-[100px] h-fit">
-
-              <ul className="space-y-44">
-
-                {SECTIONS.map((section, i) => (
-
-                  <li key={section.id}>
-
-                    <button
-                      onClick={() => scrollToSection(i)}
-                      className={`flex items-center gap-2 text-sm font-semibold tracking-wide transition-colors
-          ${activeIndex === i ? "text-[#E8573A]" : "text-gray-400"}`}
-                    >
-                      {section.label} →
-                    </button>
-
-                  </li>
-
-                ))}
-
-              </ul>
-
-            </div>
+            {/* LEFT spacer — same width as before so layout doesn't shift */}
+            <div className="hidden md:block w-[170px] shrink-0" />
 
             {/* MOBILE MENU */}
             <div className="flex md:hidden gap-2 mb-8 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-hide">
@@ -182,12 +168,12 @@ export default function ServicesPage() {
               ))}
             </div>
 
-            {/* TRACKER (Desktop) */}
-
+            {/* TRACKER LINE + DOT + FLOATING LABEL */}
             <div className="relative mx-8 hidden md:block" style={{ width: LINE_WIDTH }}>
-
+              {/* Gray base line */}
               <div className="absolute top-0 left-0 h-full w-full bg-gray-300 rounded-full" />
 
+              {/* Orange fill */}
               <div
                 className="absolute top-0 left-0 bg-[#E8573A] rounded-full transition-all duration-100"
                 style={{
@@ -196,6 +182,63 @@ export default function ServicesPage() {
                 }}
               />
 
+              {/* Glowing dot */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: `${dotTop}px`,
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  width: `${DOT_SIZE}px`,
+                  height: `${DOT_SIZE}px`,
+                  borderRadius: "50%",
+                  background: "#E8573A",
+                  boxShadow: "0 0 0 3px rgba(232,87,58,0.20), 0 0 8px 2px rgba(232,87,58,0.35)",
+                  transition: "top 0.08s linear",
+                  zIndex: 2,
+                }}
+              />
+
+              {/* Floating label container */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: `${labelTop}px`,
+                  right: `${LINE_WIDTH + 24}px`,
+                  width: "170px",
+                  height: "28px",
+                  transition: "top 0.09s linear",
+                  pointerEvents: "none",
+                  overflow: "visible",
+                }}
+              >
+                {SECTIONS.map((section, i) => (
+                  <button
+                    key={section.id}
+                    onClick={() => scrollToSection(i)}
+                    style={{
+                      position: "absolute",
+                      right: 0,
+                      top: 0,
+                      whiteSpace: "nowrap",
+                      fontSize: "13px",
+                      fontWeight: 700,
+                      letterSpacing: "0.06em",
+                      border: "none",
+                      background: "none",
+                      cursor: "pointer",
+                      color: "#E8573A",
+                      padding: 0,
+                      opacity: activeIndex === i ? 1 : 0,
+                      transform: activeIndex === i ? "translateY(0px)" : prevIndex === i ? "translateY(-8px)" : "translateY(8px)",
+                      transition: "opacity 0.25s ease, transform 0.25s ease",
+                      pointerEvents: activeIndex === i ? "auto" : "none",
+                    }}
+                  >
+                    {section.label} →
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* RIGHT CONTENT */}
@@ -259,35 +302,6 @@ export default function ServicesPage() {
 
           </div>
         </section>
-        <section className="relative py-16 md:py-36 text-center px-4 sm:px-6 mt-16 md:mt-32 overflow-hidden">
-
-
-          <div className="max-w-3xl mx-auto">
-
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold leading-tight text-gray-900">
-              Engineering intelligent systems for
-              <br />
-              ambitious brands
-            </h2>
-
-            <p className="mt-6 text-gray-600 leading-relaxed">
-              Ready to move beyond ordinary software? We design scalable
-              products, AI-driven workflows, and autonomous agents that
-              engage users and streamline operations.
-            </p>
-
-            <Link href="/contact-us">
-              <button className="mt-8 bg-black text-white px-7 py-3 rounded-full hover:opacity-90 transition">
-                Let&apos;s Collaborate ↗
-              </button>
-            </Link>
-
-          </div>
-
-        </section>
-
-
-
         <Footer />
       </main>
     </>
