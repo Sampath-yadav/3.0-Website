@@ -22,7 +22,7 @@ const projects = [
     },
     {
         id: 2,
-        title: 'VITS',
+        title: 'VDTS',
         image: '/svg images/VITS.svg',
         href: '/portfolio/vits',
     },

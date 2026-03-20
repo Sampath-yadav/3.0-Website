@@ -28,7 +28,7 @@ const projects = [
         href: '/portfolio/fundpitch'
     },
     {
-        title: 'VITS',
+        title: 'VDTS',
         image: '/svg images/VITS.svg',
         width: 600,
         height: 400,

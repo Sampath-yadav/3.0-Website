@@ -31,7 +31,7 @@ export default function VITSPage() {
           
           <div className="rounded-3xl overflow-hidden border border-neutral-200 bg-neutral-50 shadow-2xl">
             <img 
-              src="/portfolioimages/VITS (1).png" 
+              src="/svg images/VITS.svg" 
               alt="VITS Showcase" 
               className="w-full h-auto object-cover"
             />
