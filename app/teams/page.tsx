@@ -29,7 +29,7 @@ const teamSections = [
       { name: "Sampath", role: "Frontend Developer", image: "/team/Sampath.jpeg", linkedin: "#" },
       { name: "ManojKumar", role: "Frontend Developer", image: "/team/manoj.png", linkedin: "https://www.linkedin.com/in/manojkumar-gopagani-1a7075373?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
       { name: "Srinivas K", role: "Frontend Developer", image: "/team/srinivas .jpeg", linkedin: "https://www.linkedin.com/in/srinivas-kaviti-90960a376?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-      { name: "Prem Kumar", role: "Full Stack Developer", image: "/team/Prem.jpeg", linkedin: "https://www.linkedin.com/in/prem-kumar-277966356" },
+      { name: "Prem Kumar", role: "Full Stack Developer", image: "/team/prem.jpeg", linkedin: "https://www.linkedin.com/in/prem-kumar-277966356" },
       { name: "Arun Sai", role: "Full Stack Developer", image: "/team/arun.jpeg", linkedin: "https://www.linkedin.com/in/arunsai-burra-69827b236" },
     ],
   },
