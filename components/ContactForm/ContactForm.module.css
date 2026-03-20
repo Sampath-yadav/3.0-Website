@@ -43,7 +43,7 @@
 }
 
 .heading {
-  font-size: clamp(32px, 6vw, 44px) !important;
+  font-size: clamp(24px, 4vw, 32px) !important;
   font-weight: 800 !important;  
   color: #1a1a1a !important;
   line-height: 1.1 !important;
