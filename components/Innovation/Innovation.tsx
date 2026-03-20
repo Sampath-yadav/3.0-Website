@@ -41,7 +41,7 @@ const services = [
                 <path d="M10 17H14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
         ),
-        type: 'white-blue'
+        type: 'white-orange'
     }
 ];
 
@@ -51,7 +51,7 @@ const Innovation = () => {
             <div className={styles.mainContainer}>
                 <div className={styles.header}>
                     <h2 className={styles.title}>
-                        Where innovation <br /> meets <span className={styles.gradientText}>aesthetics</span>
+                        Where innovation <br /> meets <span className={styles.gradientText}>execution</span>
                     </h2>
                 </div>
 

@@ -49,7 +49,7 @@ const steps = [
 
 const projects = [
     { name: 'FundPitch', color: '#ff8c6b' },
-    { name: 'VDTS', color: '#7c3aed' },
+    { name: 'VITS', color: '#7c3aed' },
     { name: 'BhoomiBox', color: '#FFB300' },
     { name: 'NaviPrep', color: '#3b82f6' },
     { name: 'Starlink', color: '#6366f1' },

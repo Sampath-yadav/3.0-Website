@@ -22,11 +22,9 @@ const projects = [
     },
     {
         id: 2,
-        title: 'VDTS',
-        image: '/portfolioimages/VITS (1).png',
+        title: 'VITS',
+        image: '/svg images/VITS.svg',
         href: '/portfolio/vits',
-        width: 1280,
-        height: 800,
     },
     {
         id: 3,
