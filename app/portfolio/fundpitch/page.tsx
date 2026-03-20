@@ -31,7 +31,7 @@ export default function FundPitchPage() {
           
           <div className="rounded-3xl overflow-hidden border border-neutral-200 bg-neutral-50 shadow-2xl">
             <img 
-              src="/portfolioimages/fundpitch.png" 
+              src="/svg images/fundpitch.svg" 
               alt="FundPitch Showcase" 
               className="w-full h-auto object-cover"
             />

@@ -1,13 +1,28 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import styles from './Portfolio.module.css';
 
 const projects = [
     {
+        title: 'BFSI Skill Portal',
+        image: '/portfolioimages/bfsi.svg',
+        width: 600,
+        height: 400,
+        href: '/portfolio/bfsi-skill-portal'
+    },
+    {
+        title: 'Blue Cross Hyderabad',
+        image: '/portfolioimages/bluegross.png',
+        width: 600,
+        height: 400,
+        href: '/portfolio/blue-cross-hyderabad'
+    },
+    {
         title: 'FundPitch',
-        image: '/portfolioimages/fundpitch.png',
+        image: '/svg images/fundpitch.svg',
         width: 600,
         height: 400,
         href: '/portfolio/fundpitch'
@@ -28,24 +43,17 @@ const projects = [
     },
     {
         title: 'NaviPrep',
-        image: '/portfolioimages/Sailor 1.png',
+        image: '/svg images/Sailor.svg',
         width: 600,
         height: 400,
         href: '/portfolio/naviprep'
     },
     {
         title: 'Starlink',
-        image: '/portfolioimages/starlink.png',
+        image: '/svg images/starlink.svg',
         width: 600,
         height: 400,
         href: '/portfolio/starlink'
-    },
-    {
-        title: 'Blue Cross Hyderabad',
-        image: '/portfolioimages/bluegross.png',
-        width: 600,
-        height: 400,
-        href: '/portfolio/blue-cross-hyderabad'
     }
 ];
 
@@ -65,7 +73,14 @@ const Portfolio = () => {
                         const content = (
                             <>
                                 <div className={styles.imgWrapper}>
-                                    <img src={project.image} alt={project.title} />
+                                    <Image
+                                        src={project.image}
+                                        alt={project.title}
+                                        width={project.width}
+                                        height={project.height}
+                                        quality={100}
+                                        unoptimized
+                                    />
                                 </div>
                                 <h4 className={styles.projTitle}>{project.title}</h4>
                             </>

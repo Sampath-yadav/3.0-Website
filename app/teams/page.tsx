@@ -21,7 +21,7 @@ const teamSections = [
     members: [
       { name: "Zuber", role: "AI & Automation Engineer", image: "/team/zuber.png", linkedin: "https://www.linkedin.com/in/muhammad-zuber-syed-0ba19426b/" },
       { name: "Ashvith Adepu", role: "AI & Automation Engineer", image: "/team/dominic.png", linkedin: "https://www.linkedin.com/in/adepuashvith/" },
-      { name: "Sumanth G", role: "AI & Automation Engineer", image: "/team/sumanthgandesiri.jpeg", linkedin: "www.linkedin.com/in/sumanth-gandesiri" },
+      { name: "Sumanth G", role: "AI & Automation Engineer", image: "/team/sumanthgandesiri.jpeg", linkedin: "https://www.linkedin.com/in/sumanth-gandesiri" },
       { name: "Mohammed Aqib", role: "Devops Engineer", image: "/team/james.png", linkedin: "https://www.linkedin.com/in/mohammed-aqib-uddin-5495591b8/" },
       { name: "Shiva", role: "AI Engineer", image: "/team/shiva.png", linkedin: "linkedin.com/in/sivakumar-l-363907278/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" },
       { name: "Suraj", role: "Backend Developer", image: "/team/suraj.jpeg", linkedin: "https://www.linkedin.com/in/sai-suraj-gummadi/" },
@@ -74,8 +74,8 @@ export default function TeamsPage() {
                 />
                 <p className="mt-4 font-medium text-gray-900">Nithin Varma M</p>
                 <p className="text-sm text-gray-500">Co-Founder</p>
-                <div className="flex justify-center gap-3 mt-2 text-gray-500">
-                  <Link href="https://www.linkedin.com/in/nithin-varma-mekala-a5a471188/" className="hover:text-[#0077B5] transition-colors">
+                <div className="flex justify-center gap-3 mt-2 text-black">
+                  <Link href="https://www.linkedin.com/in/nithin-varma-mekala-a5a471188/" className="hover:opacity-70 transition-opacity">
                     <Linkedin size={16} />
                   </Link>
                 </div>
@@ -91,8 +91,8 @@ export default function TeamsPage() {
                 />
                 <p className="mt-4 font-medium text-gray-900">Sai kiran G L</p>
                 <p className="text-sm text-gray-500">Co-Founder</p>
-                <div className="flex justify-center gap-3 mt-2 text-gray-500">
-                  <Link href="https://www.linkedin.com/in/saikiran193/" className="hover:text-[#0077B5] transition-colors">
+                <div className="flex justify-center gap-3 mt-2 text-black">
+                  <Link href="https://www.linkedin.com/in/saikiran193/" className="hover:opacity-70 transition-opacity">
                     <Linkedin size={16} />
                   </Link>
                 </div>
@@ -150,8 +150,8 @@ export default function TeamsPage() {
                       <p className="text-sm text-purple-600 font-medium mt-1">
                         {member.role}
                       </p>
-                      <div className="flex justify-center gap-4 mt-3 text-gray-400 group-hover:text-gray-600 transition-colors">
-                        <Link href={member.linkedin} target="_blank" className="hover:text-[#0077B5] transition-colors">
+                      <div className="flex justify-center gap-4 mt-3 text-black transition-opacity">
+                        <Link href={member.linkedin} target="_blank" className="hover:opacity-70 transition-opacity">
                           <Linkedin size={18} />
                         </Link>
                       </div>

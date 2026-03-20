@@ -31,7 +31,7 @@ export default function StarlinkPage() {
           
           <div className="rounded-3xl overflow-hidden border border-neutral-200 bg-neutral-50 shadow-2xl">
             <img 
-              src="/portfolioimages/starlink.png" 
+              src="/svg images/starlink.svg" 
               alt="Starlink Showcase" 
               className="w-full h-auto object-cover"
             />

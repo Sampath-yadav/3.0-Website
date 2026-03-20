@@ -18,7 +18,7 @@ const testimonials = [
         role: 'Co-Founder',
         photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop',
         quote: '“Awesome experience working with the team at Heroes of Digital! Always very responsive and continuously gives us suggestions to improve our business.”',
-        type: 'text-top'
+        type: 'image-top'
     },
     {
         id: 3,

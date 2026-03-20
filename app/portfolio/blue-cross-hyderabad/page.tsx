@@ -24,25 +24,10 @@ export default function BlueCrossPage() {
     <>
       <Header />
 
-      <main className="pt-24 relative z-10">
+      <main className="pt-24 relative">
         {/* ===== HERO SECTION ===== */}
         <section className="relative min-h-[50vh] md:min-h-[70vh] flex items-center overflow-hidden">
-          {/* Paw prints decoration */}
-          <img
-            src="/bluegross images/mdi_paw.png"
-            alt=""
-            className="absolute top-16 right-[15%] w-24 opacity-100 rotate-[-15deg]"
-          />
-          <img
-            src="/bluegross images/mdi_paw.png"
-            alt=""
-            className="absolute bottom-20 left-[10%] w-16 opacity-100 rotate-[20deg]"
-          />
-          <img
-            src="/bluegross images/mdi_paw.png"
-            alt=""
-            className="absolute top-[40%] right-[5%] w-12 opacity-100 rotate-[45deg]"
-          />
+          {/* No background paw prints here per updated ref */}
 
           <div className="max-w-[1400px] mx-auto px-8 w-full grid md:grid-cols-2 gap-12 items-center">
             {/* Left — ABC Logo */}
@@ -50,65 +35,48 @@ export default function BlueCrossPage() {
               <Image
                 src="/bluegross images/abc-mobile-2 1.png"
                 alt="ABC Management Portal by Blue Cross of Hyderabad"
-                width={450}
-                height={300}
-                className="w-full max-w-[450px] h-auto object-contain"
+                width={547}
+                height={342}
+                className="w-full max-w-[547px] h-auto object-contain"
               />
             </div>
 
-            {/* Right — Phone mockup + dog + yellow card */}
-            <div className="relative flex justify-center items-end min-h-[400px] md:min-h-[500px]">
-              {/* Paw decoration top-right */}
-              <div className="absolute top-0 right-0 w-[120px] md:w-[200px] opacity-100">
-                <Image
-                  src="/bluegross images/mdi_paw.png"
-                  alt=""
-                  width={200}
-                  height={200}
-                  className="w-full h-auto object-contain"
-                />
-              </div>
-
-              {/* Paw decoration left */}
-              <div className="absolute top-[20%] left-0 w-[100px] md:w-[200px] opacity-100 rotate-[-15deg]">
-                <Image
-                  src="/bluegross images/mdi_paw.png"
-                  alt=""
-                  width={200}
-                  height={200}
-                  className="w-full h-auto object-contain"
-                />
-              </div>
-
-              {/* Phone mockup */}
-              <Image
-                src="/bluegross images/iMockup - Google Pixel 8 Pro.png"
-                alt="Blue Cross App"
-                width={280}
-                height={560}
-                className="relative z-10 drop-shadow-2xl"
+            {/* Right — Phone mockup + dog + paw watermarks */}
+            <div className="relative flex flex-col justify-center items-center w-full max-w-[500px] mx-auto">
+              {/* Paw watermark — behind left */}
+              <img
+                src="/bluegross images/mdi_paw.png"
+                alt=""
+                className="absolute top-[5%] left-[-5%] w-[200px] md:w-[280px] opacity-[0.08] -rotate-12 z-0"
               />
 
-              {/* Yellow card overlay — top right */}
-              <div className="absolute top-4 right-0 md:right-4 z-20 w-[160px] md:w-[220px] rounded-xl overflow-hidden shadow-xl">
+              {/* Paw watermark — behind right */}
+              <img
+                src="/bluegross images/mdi_paw.png"
+                alt=""
+                className="absolute top-[0%] right-[-5%] w-[140px] md:w-[200px] opacity-[0.08] rotate-12 z-0"
+              />
+
+              {/* Phone mockup — upright, positioned above dog */}
+              <div className="relative z-10" style={{ transform: 'rotate(0deg)' }}>
                 <Image
-                  src="/bluegross images/pexels-ahmedhamed20-7008099 1.png"
-                  alt="Vet with dog"
-                  width={220}
-                  height={160}
-                  className="w-full h-auto object-cover rounded-xl"
+                  src="/bluegross images/iMockup - Google Pixel 8 Pro.png"
+                  alt="Blue Cross App"
+                  width={240}
+                  height={480}
+                  className="drop-shadow-2xl"
+                  style={{ transform: 'rotate(0deg)' }}
                 />
               </div>
 
-              {/* Dog image — bottom right */}
+              {/* Dog — sitting in front at bottom */}
               <motion.div
-                className="absolute -bottom-4 -right-4 md:-right-12 z-20 w-[280px] h-[152px] md:w-[525px] md:h-[284px]"
+                className="relative z-20 -mt-36 w-[280px] md:w-[380px]"
                 animate={{
-                  rotate: [0, -1, 1, 0],
-                  scale: [1, 1.01, 1]
+                  scale: [1, 1.005, 1]
                 }}
                 transition={{
-                  duration: 4,
+                  duration: 5,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
@@ -116,9 +84,9 @@ export default function BlueCrossPage() {
                 <Image
                   src="/bluegross images/pngwing.com 1.png"
                   alt="Dog"
-                  width={525}
-                  height={284}
-                  className="w-full h-full object-contain"
+                  width={380}
+                  height={206}
+                  className="w-full h-auto object-contain"
                 />
               </motion.div>
             </div>
@@ -126,14 +94,15 @@ export default function BlueCrossPage() {
         </section>
 
         {/* ===== DOG + BEAGLE IMAGE SECTION ===== */}
-        <section className="relative pt-8 pb-0 overflow-hidden">
-          <div className="w-full px-0 -mt-32 md:-mt-32">
-            <div className="flex justify-start">
-              <div className="relative w-[300px] h-[280px] md:w-[527px] md:h-[496px]">
+        <section className="relative pt-0 pb-0 overflow-visible">
+          <div className="w-full px-0 relative z-0">
+            <div className="flex justify-start overflow-visible">
+              <div className="relative w-[100px] h-[100px] md:w-[160px] md:h-[150px]">
                 <Image
                   src="/bluegross images/image 341.png"
                   alt="Beagle dog"
-                  fill
+                  width={527}
+                  height={496}
                   className="object-contain object-left"
                 />
               </div>
@@ -146,7 +115,7 @@ export default function BlueCrossPage() {
           <div className="max-w-[1272px] mx-auto px-6">
             {/* Top Row — Field Staff + Vet Doctors */}
             <div className="relative grid gap-6 grid-cols-1 md:grid-cols-[2fr_1fr]">
-              {/* Field Staff Card */}
+              {/* Field Staff Card — using composed image */}
               <div className="rounded-2xl overflow-hidden relative h-[320px] md:h-[480px]">
                 <Image
                   src="/bluegross images/image.png"
@@ -154,27 +123,10 @@ export default function BlueCrossPage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                <div className="absolute top-5 left-5">
-                  <span className="text-white/70 text-xs font-medium tracking-widest uppercase">
-                    Field Staff
-                  </span>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="text-white text-[15px] font-medium leading-relaxed">
-                    Field workers use the mobile app to update capture, release, and shelter tasks in real time.
-                  </p>
-                  <p className="text-[#F5A623] text-[13px] mt-2 leading-relaxed">
-                    This helps the team stay organized and ensures every animal record is tracked properly, without manual paperwork.
-                  </p>
-                  <p className="text-white/40 text-[11px] mt-3 uppercase tracking-wider">
-                    Field Operations Made Simple
-                  </p>
-                </div>
               </div>
 
-              {/* Veterinary Doctors Card */}
-              <div className="relative h-auto md:h-[480px]">
+              {/* Veterinary Doctors Card — using composed image */}
+              <div className="relative min-h-[320px] md:h-[480px]">
                 {/* Dogs peeking */}
                 <div className="absolute -top-[82px] left-1/2 -translate-x-1/2 w-[340px] z-20 md:block hidden">
                   <Image
@@ -186,50 +138,27 @@ export default function BlueCrossPage() {
                   />
                 </div>
 
-                <div className="rounded-2xl bg-[#F5E44B] pt-8 pb-8 px-6 flex flex-col h-full relative z-10">
-                  <span className="text-gray-600 text-[11px] font-medium tracking-widest uppercase mb-4">
-                    Veterinary Doctors
-                  </span>
-                  <div className="mb-6 rounded-xl overflow-hidden border-2 border-white/20">
-                    <Image
-                      src="/bluegross images/pexels-ahmedhamed20-7008099 1.png"
-                      alt="Veterinary Doctors"
-                      width={352}
-                      height={209}
-                      className="w-full h-[209px]"
-                    />
-                  </div>
-                  <div className="mb-6">
-                    <h3 className="text-xl font-bold text-gray-900 leading-snug">
-                      Medical Records in One Place
-                    </h3>
-                    <p className="text-gray-700 text-[12px] mt-2 leading-relaxed">
-                      Doctors can record surgery details, health status, and treatment updates directly from the app. This keeps every animal&apos;s medical history clear, accurate, and easy to access when needed.
-                    </p>
-                  </div>
+                <div className="rounded-2xl overflow-hidden h-full relative z-10 min-h-[320px] md:min-h-[480px]">
+                  <Image
+                    src="/bluegross images/Frame 276.png"
+                    alt="Veterinary Doctors"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </div>
 
             {/* Bottom Row — Management + Reporting */}
             <div className="grid gap-6 mt-6 grid-cols-1 md:grid-cols-[1fr_2fr]">
-              {/* Management & Admin Card */}
-              <div className="rounded-2xl bg-black p-5 flex flex-col min-h-[320px] md:min-h-[472px]">
-                <span className="text-white/50 text-[11px] font-medium tracking-widest uppercase">
-                  Management & Admin
-                </span>
-                <p className="text-white/90 text-[13px] mt-4 leading-relaxed">
-                  The web dashboard allows management to monitor teams, vehicles, schedules, and reports from one place. This makes planning easier and helps the organization run daily operations smoothly.
-                </p>
-                <div className="mt-auto rounded-xl overflow-hidden">
-                  <Image
-                    src="/bluegross images/Frame 200.png"
-                    alt="Dashboard"
-                    width={400}
-                    height={220}
-                    className="w-full h-auto rounded-xl opacity-80"
-                  />
-                </div>
+              {/* Management & Admin Card — using composed image */}
+              <div className="rounded-2xl overflow-hidden flex flex-col h-full min-h-[320px] md:min-h-[472px] relative z-10">
+                <Image
+                  src="/bluegross images/Frame 200.png"
+                  alt="Management & Admin"
+                  fill
+                  className="object-cover"
+                />
               </div>
 
               {/* Reporting & Tracking Card */}

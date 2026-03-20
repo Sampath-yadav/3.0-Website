@@ -3,9 +3,21 @@ import styles from './PortfolioGrid.module.css';
 
 const projects = [
     {
+        id: 7,
+        title: 'BFSI Skill Portal',
+        image: '/portfolioimages/bfsi.svg',
+        href: '/portfolio/bfsi-skill-portal',
+    },
+    {
+        id: 6,
+        title: 'Blue Cross Hyderabad',
+        image: '/portfolioimages/bluegross.png',
+        href: '/portfolio/blue-cross-hyderabad',
+    },
+    {
         id: 1,
         title: 'FundPitch',
-        image: '/portfolioimages/fundpitch.png',
+        image: '/svg images/fundpitch.svg',
         href: '/portfolio/fundpitch',
     },
     {
@@ -25,20 +37,14 @@ const projects = [
     {
         id: 4,
         title: 'NaviPrep',
-        image: '/portfolioimages/Sailor 1.png',
+        image: '/svg images/Sailor.svg',
         href: '/portfolio/naviprep',
     },
     {
         id: 5,
         title: 'Starlink',
-        image: '/portfolioimages/starlink.png',
-        href: '',
-    },
-    {
-        id: 6,
-        title: 'Blue Cross Hyderabad',
-        image: '/portfolioimages/bluegross.png',
-        href: '/portfolio/blue-cross-hyderabad',
+        image: '/svg images/starlink.svg',
+        href: '/portfolio/starlink',
     },
 ];
 

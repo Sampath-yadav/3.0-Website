@@ -31,7 +31,7 @@ export default function NaviPrepPage() {
           
           <div className="rounded-3xl overflow-hidden border border-neutral-200 bg-neutral-50 shadow-2xl">
             <img 
-              src="/portfolioimages/Sailor 1.png" 
+              src="/svg images/Sailor.svg" 
               alt="NaviPrep Showcase" 
               className="w-full h-auto object-cover"
             />

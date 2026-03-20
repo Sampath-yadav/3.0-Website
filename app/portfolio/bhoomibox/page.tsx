@@ -60,15 +60,14 @@ const BhoomiboxPage = () => {
                                 initial={{ opacity: 0, scale: 0.9, y: 40 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
-                                style={{ width: '140px', height: '140px', overflow: 'hidden', position: 'relative', borderRadius: '24px' }}
                             >
                                 <Image
                                     src="/bhoomi box images/BBLOGO.png"
                                     alt="BhoomiBox"
-                                    width={800}
-                                    height={500}
+                                    width={200}
+                                    height={200}
                                     priority
-                                    style={{ position: 'absolute', left: '-30%', top: '-15%', width: '420%', height: 'auto', maxWidth: 'none' }}
+                                    className="w-[140px] h-auto object-contain"
                                 />
                             </motion.div>
 
@@ -221,7 +220,7 @@ const BhoomiboxPage = () => {
                         {/* Title Col */}
                         <div className="md:col-span-4 flex items-start gap-4">
                             <div className="w-1.5 h-8 bg-[#FFB300] rounded-full mt-1 shrink-0" />
-                            <h2 className="text-4xl font-bold text-gray-300">Context</h2>
+                            <h2 className="text-4xl font-bold text-gray-900">Context</h2>
                         </div>
 
                         {/* Content Col */}
@@ -338,7 +337,7 @@ const BhoomiboxPage = () => {
                         {/* Title Col */}
                         <div className="md:col-span-4 flex items-start gap-4">
                             <div className="w-1.5 h-8 bg-[#FFB300] rounded-full mt-1 shrink-0" />
-                            <h2 className="text-4xl font-bold text-gray-300">Connecting Users to Farmers</h2>
+                            <h2 className="text-4xl font-bold text-gray-900">Connecting Users to Farmers</h2>
                         </div>
 
                         {/* Content Col */}

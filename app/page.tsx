@@ -17,9 +17,9 @@ export default function Home() {
       <SectionReveal>
         <Approach />
       </SectionReveal>
-      <SectionReveal>
+      {/* <SectionReveal>
         <Testimonials />
-      </SectionReveal>
+      </SectionReveal> */}
       <SectionReveal>
         <Innovation />
       </SectionReveal>
