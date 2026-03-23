@@ -113,3 +113,31 @@
         font-size: 22px;
     }
 }
+
+.viewMoreContainer {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.viewMoreBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    background-color: #111;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid #111;
+}
+
+.viewMoreBtn:hover {
+    background-color: #fff;
+    color: #111;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}

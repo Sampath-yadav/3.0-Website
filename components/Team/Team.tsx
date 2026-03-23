@@ -34,11 +34,17 @@ const Team = () => {
     return (
         <section className={styles.team} id="team">
             <div className={styles.container}>
-                <div className={styles.header}>
+                <motion.div 
+                    className={styles.header}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-40px' }}
+                    transition={{ duration: 0.5 }}
+                >
                     <h2 className={styles.title}>
                         Meet the <span className={styles.accentText}>creative minds</span> <br /> behind our success
                     </h2>
-                </div>
+                </motion.div>
 
                 <div className={styles.grid}>
                     {members.map((member, index) => (

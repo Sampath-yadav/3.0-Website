@@ -3,6 +3,7 @@ import Hero from "../components/Hero/Hero";
 import Approach from "../components/Approach/Approach";
 import Testimonials from "../components/Testimonials/Testimonials";
 import Innovation from "../components/Innovation/Innovation";
+import Clients from "../components/Clients/Clients";
 import Team from "../components/Team/Team";
 import Portfolio from "../components/Portfolio/Portfolio";
 import BottomHero from "../components/BottomHero/BottomHero";
@@ -22,6 +23,9 @@ export default function Home() {
       </SectionReveal> */}
       <SectionReveal>
         <Innovation />
+      </SectionReveal>
+      <SectionReveal>
+        <Clients />
       </SectionReveal>
       <SectionReveal>
         <Team />

@@ -69,7 +69,7 @@ const Portfolio = () => {
                 </div>
 
                 <div className={styles.grid}>
-                    {projects.map((project, index) => {
+                    {projects.slice(0, 4).map((project, index) => {
                         const content = (
                             <>
                                 <div className={styles.imgWrapper}>
@@ -107,6 +107,18 @@ const Portfolio = () => {
                         );
                     })}
                 </div>
+                
+                <motion.div 
+                    className={styles.viewMoreContainer}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                    <Link href="/portfolio" className={styles.viewMoreBtn}>
+                        View More
+                    </Link>
+                </motion.div>
             </div>
         </section>
     );

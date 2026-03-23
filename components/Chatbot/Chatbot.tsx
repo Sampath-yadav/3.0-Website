@@ -1,0 +1,296 @@
+'use client';
+
+import { useState, useRef, useEffect } from 'react';
+import { X, Send, Bot } from 'lucide-react';
+import styles from './Chatbot.module.css';
+
+interface Message {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+export default function Chatbot() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const [showLabel, setShowLabel] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowLabel(true), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, isOpen]);
+
+  const initialQuestions = [
+    'What services do you offer?',
+    'Tell me about your portfolio',
+    'Who founded 3.0 Labs?',
+    'How can I contact you?',
+    'What tech stack do you use?',
+  ];
+
+  const followUpMap: Record<string, string[]> = {
+    services: [
+      'Tell me about AI Agents',
+      'What is Full-Stack Engineering?',
+      'How does AI Automation work?',
+    ],
+    portfolio: [
+      'What is FundPitch?',
+      'Tell me about BhoomiBox',
+      'What is NaviPrep?',
+      'Tell me about Blue Cross app',
+    ],
+    founder: [
+      'Where is your office?',
+      'How can I contact you?',
+      'What services do you offer?',
+    ],
+    contact: [
+      'Where is your office located?',
+      'What services do you offer?',
+      'Tell me about your portfolio',
+    ],
+    tech: [
+      'Tell me about your AI work',
+      'What projects have you built?',
+      'Who is on the team?',
+    ],
+    project: [
+      'What other projects do you have?',
+      'What services do you offer?',
+      'How can I contact you?',
+    ],
+    team: [
+      'Who founded 3.0 Labs?',
+      'What services do you offer?',
+      'How can I contact you?',
+    ],
+    default: [
+      'What services do you offer?',
+      'Tell me about your portfolio',
+      'How can I contact you?',
+    ],
+  };
+
+  const getFollowUps = (lastUserMsg: string): string[] => {
+    const msg = lastUserMsg.toLowerCase();
+    if (msg.includes('service') || msg.includes('offer') || msg.includes('do you do'))
+      return followUpMap.services;
+    if (msg.includes('portfolio') || msg.includes('project') || msg.includes('work') || msg.includes('built'))
+      return followUpMap.portfolio;
+    if (msg.includes('found') || msg.includes('who started') || msg.includes('ceo'))
+      return followUpMap.founder;
+    if (msg.includes('contact') || msg.includes('email') || msg.includes('reach'))
+      return followUpMap.contact;
+    if (msg.includes('tech') || msg.includes('stack') || msg.includes('tools'))
+      return followUpMap.tech;
+    if (msg.includes('fundpitch') || msg.includes('bhoomi') || msg.includes('naviprep') || msg.includes('blue cross') || msg.includes('starlink') || msg.includes('bfsi') || msg.includes('vdts'))
+      return followUpMap.project;
+    if (msg.includes('team') || msg.includes('developer') || msg.includes('designer'))
+      return followUpMap.team;
+    return followUpMap.default;
+  };
+
+  const sendMessage = async (text: string) => {
+    if (!text.trim() || isLoading) return;
+
+    const userMessage: Message = {
+      id: `user-${Date.now()}`,
+      role: 'user',
+      content: text.trim(),
+    };
+
+    const updatedMessages = [...messages, userMessage];
+    setMessages(updatedMessages);
+    setInput('');
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: updatedMessages.map((m) => ({
+            role: m.role,
+            content: m.content,
+          })),
+        }),
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        let errMsg = `Server error (${res.status})`;
+        try {
+          const parsed = JSON.parse(text);
+          if (parsed.error) errMsg = parsed.error;
+        } catch {}
+        throw new Error(errMsg);
+      }
+
+      if (!res.body) throw new Error('No response body');
+
+      const botId = `bot-${Date.now()}`;
+      setMessages((prev) => [...prev, { id: botId, role: 'assistant', content: '' }]);
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let accumulated = '';
+
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        if (!value) continue;
+
+        accumulated += decoder.decode(value, { stream: true });
+
+        const snapshot = accumulated;
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === botId ? { ...msg, content: snapshot } : msg
+          )
+        );
+      }
+    } catch (err: any) {
+      console.error('Chat error:', err);
+      setError(err.message || 'Something went wrong');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    sendMessage(input);
+  };
+
+  return (
+    <div className={styles.chatbotContainer}>
+      <div className={`${styles.chatWindow} ${isOpen ? styles.chatWindowOpen : styles.chatWindowClosed}`}>
+        <div className={styles.header}>
+          <div className={styles.headerInfo}>
+            <div className={styles.botAvatar}><Bot size={20} /></div>
+            <div>
+              <h3 className={styles.title}>3.0 Labs Assistant</h3>
+              <p className={styles.subtitle}>Ask me about our work & services</p>
+            </div>
+          </div>
+          <button onClick={() => setIsOpen(false)} className={styles.closeBtn}>
+            <X size={20} />
+          </button>
+        </div>
+
+        <div className={styles.messagesContainer}>
+          {messages.length === 0 ? (
+            <div className={styles.emptyState}>
+              <Bot size={32} className={styles.emptyAvatar} />
+              <h4>Hi there!</h4>
+              <p>I can help answer questions about 3.0 Labs. Try one of these:</p>
+              <div className={styles.suggestions}>
+                {initialQuestions.map((q: string) => (
+                  <button
+                    key={q}
+                    className={styles.suggestionChip}
+                    onClick={() => sendMessage(q)}
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : (
+            messages.map((m) => (
+              <div
+                key={m.id}
+                className={`${styles.messageWrapper} ${
+                  m.role === 'user' ? styles.userMessageWrapper : styles.botMessageWrapper
+                }`}
+              >
+                <div className={styles.messageContent}>
+                  {m.role === 'assistant' && (
+                    <div className={styles.messageAvatar}><Bot size={14} /></div>
+                  )}
+                  <div
+                    className={`${styles.messageBubble} ${
+                      m.role === 'user' ? styles.userBubble : styles.botBubble
+                    }`}
+                  >
+                    {m.content || '...'}
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
+
+          {!isLoading && messages.length > 0 && messages[messages.length - 1]?.role === 'assistant' && messages[messages.length - 1]?.content && (() => {
+            const lastUserMsg = [...messages].reverse().find((m) => m.role === 'user');
+            const followUps = getFollowUps(lastUserMsg?.content || '');
+            return (
+              <div className={styles.suggestions}>
+                {followUps.map((q: string) => (
+                  <button
+                    key={q}
+                    className={styles.suggestionChip}
+                    onClick={() => sendMessage(q)}
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
+            );
+          })()}
+
+          {isLoading && messages[messages.length - 1]?.role === 'user' && (
+            <div className={`${styles.messageWrapper} ${styles.botMessageWrapper}`}>
+              <div className={styles.messageContent}>
+                <div className={styles.messageAvatar}><Bot size={14} /></div>
+                <div className={`${styles.messageBubble} ${styles.botBubble} ${styles.typingIndicator}`}>
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {error && <div className={styles.errorText}>{error}</div>}
+          <div ref={messagesEndRef} />
+        </div>
+
+        <form onSubmit={handleSubmit} className={styles.inputForm}>
+          <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Type your message..."
+            className={styles.input}
+          />
+          <button
+            type="submit"
+            disabled={!input.trim() || isLoading}
+            className={styles.sendBtn}
+          >
+            <Send size={18} />
+          </button>
+        </form>
+      </div>
+
+      <div className={styles.fabArea}>
+        {!isOpen && showLabel && (
+          <div className={styles.fabLabel}>
+            Ask me anything!
+          </div>
+        )}
+        <button onClick={() => setIsOpen(!isOpen)} className={styles.fabBtn}>
+          {isOpen ? <X size={24} /> : <Bot size={24} />}
+        </button>
+      </div>
+    </div>
+  );
+}

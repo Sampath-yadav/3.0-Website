@@ -3,6 +3,7 @@ import "./globals.css";
 import IntroLoaderWrapper from "@/components/IntroLoader/IntroLoaderWrapper";
 import WavyBgAnimatorWrapper from "@/components/WavyBgAnimator/WavyBgAnimatorWrapper";
 import SplashCursor from "@/components/SplashCursor/SplashCursor";
+import Chatbot from "@/components/Chatbot/Chatbot";
 
 export const metadata: Metadata = {
   title: "3.0 Labs | Engineering Intelligent Products",
@@ -24,6 +25,7 @@ export default function RootLayout({
         <div className="wavy-glow-right" id="wavy-right"></div>
         <WavyBgAnimatorWrapper />
         {children}
+        <Chatbot />
       </body>
     </html>
   );

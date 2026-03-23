@@ -3,9 +3,13 @@
 import Link from 'next/link';
 import styles from './BottomHero.module.css';
 
-const BottomHero = () => {
+interface BottomHeroProps {
+    isTransparent?: boolean;
+}
+
+const BottomHero = ({ isTransparent }: BottomHeroProps) => {
     return (
-        <section className={styles.bottomHero}>
+        <section className={`${styles.bottomHero} ${isTransparent ? styles.transparent : ''}`}>
             <div className={`${styles.container} container`}>
                 <div className={styles.content}>
                     <h2 className={styles.title}>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { Linkedin } from "lucide-react";
+import { motion } from "framer-motion";
 
 const teamSections = [
   {
@@ -128,10 +129,14 @@ export default function TeamsPage() {
                 <div className="flex-1 h-[2px] bg-gradient-to-r from-[#ff8c6b] to-transparent rounded-full" />
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-4 sm:gap-x-8 md:gap-x-12 gap-y-8 md:gap-y-16">
-                {section.members.map((member) => (
-                  <div
+                {section.members.map((member, index) => (
+                  <motion.div
                     key={member.name}
                     className="flex flex-col items-center group"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-40px' }}
+                    transition={{ duration: 0.5, delay: (index % 5) * 0.1 }}
                   >
                     <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 mb-3 md:mb-5">
                       <div className="absolute inset-0 rounded-full border-2 border-purple-100 group-hover:border-purple-300 transition-colors" />
@@ -156,7 +161,7 @@ export default function TeamsPage() {
                         </Link>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
