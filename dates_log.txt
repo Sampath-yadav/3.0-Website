@@ -1,0 +1,5 @@
+ 7b5b023 2026-03-20 Final improvements: Simplified portfolio pages, updated SVGs, faster animations, and logo scroll-to-top
+ cc977d8 2026-03-20 Add BFSI Skill Portal, update SVGs, and reorder projects
+ 2ac8246 2026-03-18 feat: hero animation, blue cross page redesign, team section layout overhaul
+ 599ffcd 2026-03-17 feat: add full responsive design and scroll animations across all pages
+ 6311e33 2026-03-16 feat: add new components, pages, and assets for deployment

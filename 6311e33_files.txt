@@ -1,0 +1,141 @@
+commit 6311e33ecaac4ff6286163fa418782273ea84c97
+Author: sumanth2578 <sumanthgandesiri001@gmail.com>
+Date:   Mon Mar 16 13:29:04 2026 +0530
+
+    feat: add new components, pages, and assets for deployment
+    
+    - Add WavyBgAnimator, IntroLoader, ScrollToTop, and other new components
+    - Add portfolio, services, and teams pages
+    - Add public assets (images, icons, decor, team photos)
+    - Update existing components and styles
+    - Update package.json, tsconfig, and postcss config
+    
+    Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
+
+app/contact-us/page.tsx
+app/globals.css
+app/portfolio/bhoomibox/page.tsx
+app/portfolio/blue-cross-hyderabad/page.tsx
+app/portfolio/fundpitch/page.tsx
+app/portfolio/naviprep/page.tsx
+app/portfolio/page.tsx
+app/portfolio/starlink/page.tsx
+app/portfolio/vits/page.tsx
+app/services/page.tsx
+app/teams/page.tsx
+components/AnimatedWaveBackground/AnimatedWaveBackground.tsx
+components/Approach/Approach.module.css
+components/Approach/Approach.tsx
+components/Background3D/Background3D.module.css
+components/Background3D/Background3D.tsx
+components/BottomHero/BottomHero.module.css
+components/BottomHero/BottomHero.tsx
+components/CTASection/CTASection.module.css
+components/CTASection/CTASection.tsx
+components/ContactForm/ContactForm.module.css
+components/ContactForm/ContactForm.tsx
+components/DNAWave/DNAWave.tsx
+components/Footer/Footer.module.css
+components/Footer/Footer.tsx
+components/Header/Header.module.css
+components/Header/Header.tsx
+components/Hero/Hero.module.css
+components/Innovation/Innovation.tsx
+components/IntroLoader/IntroLoader.tsx
+components/IntroLoader/IntroLoaderWrapper.tsx
+components/LogoBurst/LogoBurst.module.css
+components/LogoBurst/LogoBurst.tsx
+components/NebulaCursor/NebulaCursor.module.css
+components/NebulaCursor/NebulaCursor.tsx
+components/PageTransition/PageTransition.tsx
+components/Portfolio/Portfolio.module.css
+components/Portfolio/Portfolio.tsx
+components/PortfolioGrid/PortfolioGrid.module.css
+components/PortfolioGrid/PortfolioGrid.tsx
+components/ScrollToTop/ScrollToTop.tsx
+components/Team/Team.module.css
+components/Team/Team.tsx
+components/WavyBgAnimator/WavyBgAnimator.tsx
+components/WavyBgAnimator/WavyBgAnimatorWrapper.tsx
+components/WebBoard/WebBoard.module.css
+components/WebBoard/WebBoard.tsx
+package-lock.json
+package.json
+portfolio
+postcss.config.mjs
+public/CTA.png
+public/bhoomi box images/BBLOGO.png
+public/bhoomi box images/Frame 1.png
+public/bhoomi box images/Frame 2.png
+public/bhoomi box images/Frame 3.png
+public/bhoomi box images/Frame 4.png
+public/bhoomi box images/phone screen navigation.png
+public/bhoomi box images/phone screens for navigation/Curating Harvest 1.png
+public/bhoomi box images/phone screens for navigation/Farmer Prof 4 1.png
+public/bhoomi box images/phone screens for navigation/Farmer story 2 1.png
+public/bhoomi box images/phone screens for navigation/Home - first stage closed 1.png
+public/bhoomi box images/phone screens for navigation/SIgnin 1.png
+public/bhoomi box images/phone screens for navigation/Splash screen 1.png
+public/bhoomi box images/phone screens for navigation/farmerstory 1.png
+public/bhoomi box images/phone screens for navigation/members 1.png
+public/bhoomi box images/phone screens.png
+public/bluegross images/Blue Cross Hyderabad.png
+public/bluegross images/Frame 200.png
+public/bluegross images/Frame 276.png
+public/bluegross images/iMockup - Google Pixel 8 Pro (1).png
+public/bluegross images/iMockup - Google Pixel 8 Pro (2).png
+public/bluegross images/iMockup - Google Pixel 8 Pro (3).png
+public/bluegross images/iMockup - Google Pixel 8 Pro.png
+public/bluegross images/image 341.png
+public/bluegross images/image.png
+public/bluegross images/mdi_paw.png
+public/bluegross images/pexels-ahmedhamed20-7008099 1.png
+public/bluegross images/pngwing.com (6) 1.png
+public/bluegross images/pngwing.com 1 (1).png
+public/bluegross images/pngwing.com 1.png
+public/decor/side-shape.png
+public/decor/star.png
+public/directors/nithin.png
+public/directors/sai.png
+public/icons/agents.png
+public/icons/aiworkflow.png
+public/icons/fullstack.png
+public/images/naviprep/image1.png
+public/images/naviprep/image2.png
+public/images/naviprep/image3.png
+public/images/naviprep/image4.png
+public/images/naviprep/image5.png
+public/images/naviprep/image6.png
+public/images/naviprep/logo.png
+public/images/portfolio/3.0 Labs.png
+public/images/portfolio/Cover Frame 1.png
+public/images/portfolio/Cover Thumbnail 1.png
+public/images/portfolio/Mockup 6 1.png
+public/images/portfolio/banne123 1.png
+public/images/portfolio/cover 2.png
+public/images/portfolio/image 338.png
+public/images/portfolio/image 75.png
+public/images/team/Anjana.png
+public/images/team/nithin.png
+public/portfolioimages/BhoomiBox 1.png
+public/portfolioimages/Sailor 1.png
+public/portfolioimages/VITS 1.png
+public/portfolioimages/bluegross.png
+public/portfolioimages/fundpitch.png
+public/portfolioimages/starlink.png
+public/team/Dinesh.jpeg
+public/team/Gratian.jpeg
+public/team/Sampath.jpeg
+public/team/dominic.png
+public/team/james.png
+public/team/keira.png
+public/team/mehtaab .jpeg
+public/team/photo.png
+public/team/shiva.png
+public/team/srikar.png
+public/team/sumanthgandesiri.jpeg
+public/team/sumanthn.jpeg
+public/team/suraj.jpeg
+public/team/zuber.png
+revprep
+tsconfig.json

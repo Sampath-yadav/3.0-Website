@@ -1,0 +1,10 @@
+d5be3e8 Configure contact form email sending with environment variables
+ddbb906 Renamed VITS back to VDTS across the application
+1178d80 Final refinements: VITS naming, SVG updates, and contact heading size
+83e69f7 Renamed VDTS to VITS and updated project image to SVG
+541b0ad Integrated services animation from sumanth branch and simplified layout
+7b5b023 Final improvements: Simplified portfolio pages, updated SVGs, faster animations, and logo scroll-to-top
+cc977d8 Add BFSI Skill Portal, update SVGs, and reorder projects
+4e9981f fix: add missing SplashCursor component to resolve build error
+2ac8246 feat: hero animation, blue cross page redesign, team section layout overhaul
+2d6ac1f fix: update contact page content for 3.0 Labs context and match testimonials with innovation section

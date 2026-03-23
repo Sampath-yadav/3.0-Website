@@ -1,0 +1,25 @@
+d5be3e8 Configure contact form email sending with environment variables
+ddbb906 Renamed VITS back to VDTS across the application
+1178d80 Final refinements: VITS naming, SVG updates, and contact heading size
+83e69f7 Renamed VDTS to VITS and updated project image to SVG
+541b0ad Integrated services animation from sumanth branch and simplified layout
+7b5b023 Final improvements: Simplified portfolio pages, updated SVGs, faster animations, and logo scroll-to-top
+cc977d8 Add BFSI Skill Portal, update SVGs, and reorder projects
+4e9981f fix: add missing SplashCursor component to resolve build error
+2ac8246 feat: hero animation, blue cross page redesign, team section layout overhaul
+2d6ac1f fix: update contact page content for 3.0 Labs context and match testimonials with innovation section
+48aec7e fix: reduce testimonials section size to match overall application scale
+063d8b6 fix: reduce portfolio card size for a lighter, more balanced layout
+b4e8e16 fix: remove blur card animation in approach section, slow connector, refine card sizing
+7821b5d feat: link innovation cards to services page, portfolio button to portfolio page, and reduce footer branding size
+599ffcd feat: add full responsive design and scroll animations across all pages
+9ead3d7 fix: restore default cursor visibility after removing NebulaCursor
+2b85e1a remove NebulaCursor animation from layout
+4dbfa68 fix: restore NebulaCursor and fix component imports in layout
+9b4d18a fix: use @/ path alias for component imports in layout
+6311e33 feat: add new components, pages, and assets for deployment
+1b64da4 remove NebulaCursor animation from layout
+bad86ca feat: add contact page, page transitions, and update components
+251ddfd first commit
+c3734ad feat: finalize header, footer branding, and text colors
+689b07a Initial commit from Create Next App

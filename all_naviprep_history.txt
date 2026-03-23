@@ -1,0 +1,12 @@
+M	app/portfolio/naviprep/page.tsx
+M	app/portfolio/naviprep/page.tsx
+A	app/portfolio/naviprep/page.tsx
+A	public/images/naviprep/image1.png
+A	public/images/naviprep/image2.png
+A	public/images/naviprep/image3.png
+A	public/images/naviprep/image4.png
+A	public/images/naviprep/image5.png
+A	public/images/naviprep/image6.png
+A	public/images/naviprep/logo.png
+R100	public/Naviprep.png	public/images/portfolio/Naviprep.png
+A	public/Naviprep.png

@@ -1,0 +1,89 @@
+7b5b023 Final improvements: Simplified portfolio pages, updated SVGs, faster animations, and logo scroll-to-top
+diff --git a/app/portfolio/naviprep/page.tsx b/app/portfolio/naviprep/page.tsx
+index cee2a86..e21347d 100644
+--- a/app/portfolio/naviprep/page.tsx
++++ b/app/portfolio/naviprep/page.tsx
+@@ -10,7 +10,7 @@ export default function NaviPrepPage() {
+     <main className="relative min-h-screen bg-white">
+       <Header />
+       
+-      <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
++      <div className="pt-24 md:pt-32 pb-12 md:pb-20 px-4 sm:px-6 max-w-7xl mx-auto">
+         <Link 
+           href="/portfolio" 
+           className="inline-flex items-center gap-2 text-neutral-500 hover:text-neutral-900 transition-colors mb-8 group"
+@@ -21,7 +21,7 @@ export default function NaviPrepPage() {
+         
+         <div className="space-y-8">
+           <div className="space-y-4">
+-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-neutral-900">
++            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-neutral-900">
+               NaviPrep
+             </h1>
+             <p className="text-lg text-neutral-600 max-w-2xl">
+cc977d8 Add BFSI Skill Portal, update SVGs, and reorder projects
+diff --git a/app/portfolio/naviprep/page.tsx b/app/portfolio/naviprep/page.tsx
+index 287efc5..cee2a86 100644
+--- a/app/portfolio/naviprep/page.tsx
++++ b/app/portfolio/naviprep/page.tsx
+@@ -31,7 +31,7 @@ export default function NaviPrepPage() {
+           
+           <div className="rounded-3xl overflow-hidden border border-neutral-200 bg-neutral-50 shadow-2xl">
+             <img 
+-              src="/portfolioimages/Sailor 1.png" 
++              src="/svg images/Sailor.svg" 
+               alt="NaviPrep Showcase" 
+               className="w-full h-auto object-cover"
+             />
+6311e33 feat: add new components, pages, and assets for deployment
+diff --git a/app/portfolio/naviprep/page.tsx b/app/portfolio/naviprep/page.tsx
+new file mode 100644
+index 0000000..287efc5
+--- /dev/null
++++ b/app/portfolio/naviprep/page.tsx
+@@ -0,0 +1,45 @@
++'use client';
++
++import Header from "../../../components/Header/Header";
++import Footer from "../../../components/Footer/Footer";
++import Link from "next/link";
++import { ArrowLeft } from "lucide-react";
++
++export default function NaviPrepPage() {
++  return (
++    <main className="relative min-h-screen bg-white">
++      <Header />
++      
++      <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
++        <Link 
++          href="/portfolio" 
++          className="inline-flex items-center gap-2 text-neutral-500 hover:text-neutral-900 transition-colors mb-8 group"
++        >
++          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
++          Back to Portfolio
++        </Link>
++        
++        <div className="space-y-8">
++          <div className="space-y-4">
++            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-neutral-900">
++              NaviPrep
++            </h1>
++            <p className="text-lg text-neutral-600 max-w-2xl">
++              An intelligent revision platform tailored for IB & Cambridge students, designed for clarity and impact.
++            </p>
++          </div>
++          
++          <div className="rounded-3xl overflow-hidden border border-neutral-200 bg-neutral-50 shadow-2xl">
++            <img 
++              src="/portfolioimages/Sailor 1.png" 
++              alt="NaviPrep Showcase" 
++              className="w-full h-auto object-cover"
++            />
++          </div>
++        </div>
++      </div>
++
++      <Footer />
++    </main>
++  );
++}

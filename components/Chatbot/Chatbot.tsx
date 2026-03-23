@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { X, Send, Bot } from 'lucide-react';
+import { X, Send } from 'lucide-react';
 import styles from './Chatbot.module.css';
 
 interface Message {
@@ -17,6 +17,57 @@ export default function Chatbot() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Resize logic
+  const [chatHeight, setChatHeight] = useState(480);
+  const isResizing = useRef(false);
+  const startY = useRef(0);
+  const startHeight = useRef(0);
+  const resizingFrom = useRef<'top' | 'bottom'>('top');
+
+  const startResizingTop = (e: React.MouseEvent) => {
+    isResizing.current = true;
+    resizingFrom.current = 'top';
+    startY.current = e.clientY;
+    startHeight.current = chatHeight;
+    document.addEventListener('mousemove', handleResizing);
+    document.addEventListener('mouseup', stopResizing);
+    document.body.style.cursor = 'ns-resize';
+    document.body.style.userSelect = 'none';
+  };
+
+  const startResizingBottom = (e: React.MouseEvent) => {
+    isResizing.current = true;
+    resizingFrom.current = 'bottom';
+    startY.current = e.clientY;
+    startHeight.current = chatHeight;
+    document.addEventListener('mousemove', handleResizing);
+    document.addEventListener('mouseup', stopResizing);
+    document.body.style.cursor = 'ns-resize';
+    document.body.style.userSelect = 'none';
+  };
+
+  const handleResizing = (e: MouseEvent) => {
+    if (!isResizing.current) return;
+    
+    let newHeight = startHeight.current;
+    if (resizingFrom.current === 'top') {
+      const deltaY = startY.current - e.clientY;
+      newHeight = Math.min(Math.max(300, startHeight.current + deltaY), 800);
+    } else {
+      const deltaY = e.clientY - startY.current;
+      newHeight = Math.min(Math.max(300, startHeight.current - deltaY), 800);
+    }
+    setChatHeight(newHeight);
+  };
+
+  const stopResizing = () => {
+    isResizing.current = false;
+    document.removeEventListener('mousemove', handleResizing);
+    document.removeEventListener('mouseup', stopResizing);
+    document.body.style.cursor = 'default';
+    document.body.style.userSelect = 'auto';
+  };
 
   const [showLabel, setShowLabel] = useState(false);
 
@@ -175,10 +226,19 @@ export default function Chatbot() {
 
   return (
     <div className={styles.chatbotContainer}>
-      <div className={`${styles.chatWindow} ${isOpen ? styles.chatWindowOpen : styles.chatWindowClosed}`}>
+      <div 
+        className={`${styles.chatWindow} ${isOpen ? styles.chatWindowOpen : styles.chatWindowClosed}`}
+        style={isOpen ? { height: `${chatHeight}px` } : {}}
+      >
+        <div 
+          className={styles.resizeHandleTop} 
+          onMouseDown={startResizingTop}
+        />
         <div className={styles.header}>
           <div className={styles.headerInfo}>
-            <div className={styles.botAvatar}><Bot size={20} /></div>
+            <div className={styles.botAvatar}>
+              <img src="/images/logos/intologo.png" alt="3.0" className={styles.headerLogo} />
+            </div>
             <div>
               <h3 className={styles.title}>3.0 Labs Assistant</h3>
               <p className={styles.subtitle}>Ask me about our work & services</p>
@@ -192,7 +252,9 @@ export default function Chatbot() {
         <div className={styles.messagesContainer}>
           {messages.length === 0 ? (
             <div className={styles.emptyState}>
-              <Bot size={32} className={styles.emptyAvatar} />
+              <div className={styles.emptyAvatar}>
+                <img src="/images/logos/intologo.png" alt="3.0" className={styles.mainLogo} />
+              </div>
               <h4>Hi there!</h4>
               <p>I can help answer questions about 3.0 Labs. Try one of these:</p>
               <div className={styles.suggestions}>
@@ -217,7 +279,9 @@ export default function Chatbot() {
               >
                 <div className={styles.messageContent}>
                   {m.role === 'assistant' && (
-                    <div className={styles.messageAvatar}><Bot size={14} /></div>
+                    <div className={styles.messageAvatar}>
+                      <img src="/images/logos/intologo.png" alt="3.0" className={styles.messageLogo} />
+                    </div>
                   )}
                   <div
                     className={`${styles.messageBubble} ${
@@ -252,7 +316,9 @@ export default function Chatbot() {
           {isLoading && messages[messages.length - 1]?.role === 'user' && (
             <div className={`${styles.messageWrapper} ${styles.botMessageWrapper}`}>
               <div className={styles.messageContent}>
-                <div className={styles.messageAvatar}><Bot size={14} /></div>
+                <div className={styles.messageAvatar}>
+                  <img src="/images/logos/intologo.png" alt="3.0" className={styles.messageLogo} />
+                </div>
                 <div className={`${styles.messageBubble} ${styles.botBubble} ${styles.typingIndicator}`}>
                   <span></span><span></span><span></span>
                 </div>
@@ -279,18 +345,24 @@ export default function Chatbot() {
             <Send size={18} />
           </button>
         </form>
+        <div 
+          className={styles.resizeHandleBottom} 
+          onMouseDown={startResizingBottom}
+        />
       </div>
 
-      <div className={styles.fabArea}>
-        {!isOpen && showLabel && (
-          <div className={styles.fabLabel}>
-            Ask me anything!
-          </div>
-        )}
-        <button onClick={() => setIsOpen(!isOpen)} className={styles.fabBtn}>
-          {isOpen ? <X size={24} /> : <Bot size={24} />}
-        </button>
-      </div>
+      {!isOpen && (
+        <div className={styles.fabArea}>
+          {showLabel && (
+            <div className={styles.fabLabel}>
+              Ask me anything!
+            </div>
+          )}
+          <button onClick={() => setIsOpen(true)} className={styles.fabBtn}>
+            <img src="/images/logos/intologo.png" alt="3.0" className={styles.fabLogo} />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
