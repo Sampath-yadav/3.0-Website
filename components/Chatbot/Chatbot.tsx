@@ -167,7 +167,7 @@ export default function Chatbot() {
     setError(null);
 
     try {
-      const res = await fetch('/api/chat', {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -178,9 +178,9 @@ export default function Chatbot() {
         }),
       });
 
-      if (!res.ok) {
-        const text = await res.text();
-        let errMsg = `Server error (${res.status})`;
+      if (!response.ok) {
+        const text = await response.text();
+        let errMsg = `Server error (${response.status})`;
         try {
           const parsed = JSON.parse(text);
           if (parsed.error) errMsg = parsed.error;
@@ -188,29 +188,65 @@ export default function Chatbot() {
         throw new Error(errMsg);
       }
 
-      if (!res.body) throw new Error('No response body');
+      if (!response.body) throw new Error('No response body');
 
-      const botId = `bot-${Date.now()}`;
-      setMessages((prev) => [...prev, { id: botId, role: 'assistant', content: '' }]);
+      const assistantMessageId = `bot-${Date.now()}`;
+      setMessages((prev) => [...prev, { id: assistantMessageId, role: 'assistant', content: '' }]);
 
-      const reader = res.body.getReader();
+      const reader = response.body.getReader();
       const decoder = new TextDecoder();
-      let accumulated = '';
+      let assistantContent = '';
 
       while (true) {
         const { value, done } = await reader.read();
         if (done) break;
         if (!value) continue;
 
-        accumulated += decoder.decode(value, { stream: true });
-
-        const snapshot = accumulated;
+        assistantContent += decoder.decode(value, { stream: true });
+        
         setMessages((prev) =>
           prev.map((msg) =>
-            msg.id === botId ? { ...msg, content: snapshot } : msg
+            msg.id === assistantMessageId ? { ...msg, content: assistantContent } : msg
           )
         );
       }
+
+      // Check for lead submission tag after stream finishes
+      const leadMatch = assistantContent.match(/\[SUBMIT_LEAD:\s*({[\s\S]*?})\]/);
+      if (leadMatch) {
+        try {
+          const leadData = JSON.parse(leadMatch[1]);
+          // Hide the tag from the UI
+          const cleanContent = assistantContent.replace(/\[SUBMIT_LEAD:[\s\S]*?\]/g, '').trim();
+          setMessages(prev => prev.map(m => 
+            m.id === assistantMessageId ? { ...m, content: cleanContent } : m
+          ));
+
+          // Call the contact API
+          await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              firstName: leadData.firstName,
+              lastName: leadData.lastName,
+              email: leadData.email,
+              company: leadData.company,
+              service: leadData.service || 'Chatbot Lead',
+              message: leadData.message
+            }),
+          });
+
+          // Add a confirmation message
+          setMessages(prev => [...prev, { 
+            id: `sys-${Date.now()}`, 
+            role: 'assistant', 
+            content: "Got it! Your requirements have been submitted to our team. We'll get back to you soon." 
+          }]);
+        } catch (e) {
+          console.error('Lead parsing/submission error:', e);
+        }
+      }
+
     } catch (err: any) {
       console.error('Chat error:', err);
       setError(err.message || 'Something went wrong');
