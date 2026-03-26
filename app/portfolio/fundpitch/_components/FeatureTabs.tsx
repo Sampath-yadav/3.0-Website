@@ -130,11 +130,7 @@ export default function FeatureTabs() {
             className="group p-7 md:p-9 rounded-2xl bg-[#fff7ed] border border-[#ffedd5] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgba(255,92,53,0.12)] hover:border-[#ff5c35]/40"
           >
             <div className="w-14 h-14 rounded-xl bg-[#ffedd5] group-hover:bg-[#fed7aa] transition-colors duration-300 flex items-center justify-center text-[#ff5c35] mb-6">
-              {f.ico && typeof f.ico === 'object' && 'props' in f.ico ? (
-                <f.ico.type {...f.ico.props} size={28} />
-              ) : (
-                f.ico
-              )}
+              {f.ico}
             </div>
             <h4 className="text-xl font-bold text-[#222] mb-2.5">{f.title}</h4>
             <p className="text-[0.95rem] text-[#555] leading-relaxed">{f.desc}</p>
