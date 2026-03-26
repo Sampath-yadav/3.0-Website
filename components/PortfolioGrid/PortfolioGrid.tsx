@@ -34,15 +34,9 @@ const projects = [
     },
     {
         id: 4,
-        title: 'NaviPrep',
+        title: 'SailYour AI',
         image: '/svg images/Sailor.svg',
-        href: '/portfolio/naviprep',
-    },
-    {
-        id: 5,
-        title: 'Starlink',
-        image: '/svg images/starlink.svg',
-        href: '/portfolio/starlink',
+        href: '/portfolio/sailyour-ai',
     },
 ];
 

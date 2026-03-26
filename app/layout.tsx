@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import IntroLoaderWrapper from "@/components/IntroLoader/IntroLoaderWrapper";
 import WavyBgAnimatorWrapper from "@/components/WavyBgAnimator/WavyBgAnimatorWrapper";
-import SplashCursor from "@/components/SplashCursor/SplashCursor";
+
 import Chatbot from "@/components/Chatbot/Chatbot";
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <IntroLoaderWrapper />
-        <SplashCursor />
+
         <div className="mesh-bg"></div>
         <div className="wavy-glow-left" id="wavy-left"></div>
         <div className="wavy-glow-right" id="wavy-right"></div>

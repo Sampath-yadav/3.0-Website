@@ -42,18 +42,11 @@ const projects = [
         href: '/portfolio/bhoomibox'
     },
     {
-        title: 'NaviPrep',
+        title: 'SailYour AI',
         image: '/svg images/Sailor.svg',
         width: 600,
         height: 400,
-        href: '/portfolio/naviprep'
-    },
-    {
-        title: 'Starlink',
-        image: '/svg images/starlink.svg',
-        width: 600,
-        height: 400,
-        href: '/portfolio/starlink'
+        href: '/portfolio/sailyour-ai'
     }
 ];
 

@@ -931,7 +931,17 @@ function SplashCursor({
       return hash;
     }
 
+    function isOverNavbar(e: MouseEvent) {
+      const header = document.querySelector('header');
+      if (header) {
+        const rect = header.getBoundingClientRect();
+        return e.clientY <= rect.bottom;
+      }
+      return e.clientY <= 80;
+    }
+
     function handleMouseDown(e: MouseEvent) {
+      if (isOverNavbar(e)) return;
       const pointer = pointers[0];
       const posX = scaleByPixelRatio(e.clientX);
       const posY = scaleByPixelRatio(e.clientY);
@@ -941,6 +951,7 @@ function SplashCursor({
 
     let firstMouseMoveHandled = false;
     function handleMouseMove(e: MouseEvent) {
+      if (isOverNavbar(e)) return;
       const pointer = pointers[0];
       const posX = scaleByPixelRatio(e.clientX);
       const posY = scaleByPixelRatio(e.clientY);

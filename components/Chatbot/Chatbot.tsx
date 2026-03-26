@@ -97,7 +97,7 @@ export default function Chatbot() {
     portfolio: [
       'What is FundPitch?',
       'Tell me about BhoomiBox',
-      'What is NaviPrep?',
+      'What is SailYour AI?',
       'Tell me about Blue Cross app',
     ],
     founder: [
@@ -144,7 +144,7 @@ export default function Chatbot() {
       return followUpMap.contact;
     if (msg.includes('tech') || msg.includes('stack') || msg.includes('tools'))
       return followUpMap.tech;
-    if (msg.includes('fundpitch') || msg.includes('bhoomi') || msg.includes('naviprep') || msg.includes('blue cross') || msg.includes('starlink') || msg.includes('bfsi') || msg.includes('vdts'))
+    if (msg.includes('fundpitch') || msg.includes('bhoomi') || msg.includes('sailyour') || msg.includes('blue cross') || msg.includes('bfsi') || msg.includes('vdts'))
       return followUpMap.project;
     if (msg.includes('team') || msg.includes('developer') || msg.includes('designer'))
       return followUpMap.team;
