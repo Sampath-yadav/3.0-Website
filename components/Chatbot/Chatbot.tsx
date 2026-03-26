@@ -218,30 +218,36 @@ export default function Chatbot() {
           const leadData = JSON.parse(leadMatch[1]);
           // Hide the tag from the UI
           const cleanContent = assistantContent.replace(/\[SUBMIT_LEAD:[\s\S]*?\]/g, '').trim();
-          setMessages(prev => prev.map(m => 
+          setMessages(prev => prev.map(m =>
             m.id === assistantMessageId ? { ...m, content: cleanContent } : m
           ));
 
-          // Call the contact API
-          await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              firstName: leadData.firstName,
-              lastName: leadData.lastName,
-              email: leadData.email,
-              company: leadData.company,
-              service: leadData.service || 'Chatbot Lead',
-              message: leadData.message
-            }),
-          });
+          // Validate: only submit if all required fields are real (not placeholder/empty)
+          const hasName = leadData.firstName && leadData.lastName && leadData.firstName !== '...' && leadData.lastName !== '...';
+          const hasEmail = leadData.email && leadData.email.includes('@') && leadData.email !== '...' && leadData.email !== 'user@example.com';
+          const hasCompany = leadData.company && leadData.company !== '...' && leadData.company !== 'Company Name';
+          const hasMessage = leadData.message && leadData.message !== '...';
 
-          // Add a confirmation message
-          setMessages(prev => [...prev, { 
-            id: `sys-${Date.now()}`, 
-            role: 'assistant', 
-            content: "Got it! Your requirements have been submitted to our team. We'll get back to you soon." 
-          }]);
+          if (hasName && hasEmail && hasCompany && hasMessage) {
+            await fetch('/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                firstName: leadData.firstName,
+                lastName: leadData.lastName,
+                email: leadData.email,
+                company: leadData.company,
+                service: leadData.service || 'Chatbot Lead',
+                message: leadData.message
+              }),
+            });
+
+            setMessages(prev => [...prev, {
+              id: `sys-${Date.now()}`,
+              role: 'assistant',
+              content: "Awesome! Your project details have been sent to our team. Someone from 3.0 Labs will reach out to you shortly. In the meantime, feel free to ask me anything else!"
+            }]);
+          }
         } catch (e) {
           console.error('Lead parsing/submission error:', e);
         }

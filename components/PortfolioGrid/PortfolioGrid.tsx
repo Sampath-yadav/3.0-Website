@@ -24,7 +24,7 @@ const projects = [
         id: 2,
         title: 'VDTS',
         image: '/svg images/VITS.svg',
-        href: '/portfolio/vits',
+        href: '/portfolio/vdts',
     },
     {
         id: 3,

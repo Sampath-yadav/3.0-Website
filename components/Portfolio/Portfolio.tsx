@@ -32,7 +32,7 @@ const projects = [
         image: '/svg images/VITS.svg',
         width: 600,
         height: 400,
-        href: '/portfolio/vits'
+        href: '/portfolio/vdts'
     },
     {
         title: 'Bhoomibox',

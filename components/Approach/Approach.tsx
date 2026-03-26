@@ -231,8 +231,6 @@ export default function Approach() {
         if (connectorFillRef.current) gsap.set(connectorFillRef.current, { scaleX: 0, transformOrigin: 'left center' });
 
         /* ── Animated Timeline ── */
-        let hasCompleted = false;
-
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
@@ -243,15 +241,8 @@ export default function Approach() {
             anticipatePin: 1,
             fastScrollEnd: true,
             invalidateOnRefresh: true,
-            onLeave: () => {
-              hasCompleted = true;
-              ScrollTrigger.refresh();
-            },
-            onLeaveBack: () => ScrollTrigger.refresh(),
             onUpdate: (self) => {
-              // Once animation has fully played, keep showing the final state
-              const effectiveProgress = hasCompleted ? 1 : self.progress;
-              const rawIndex = effectiveProgress * STEPS;
+              const rawIndex = self.progress * STEPS;
 
               cardRefs.current.forEach((card, i) => {
                 if (!card) return;
