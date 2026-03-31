@@ -100,7 +100,7 @@ export default function FundPitchPage() {
   return (
     <>
       <Header />
-      <main className="bg-white antialiased overflow-x-hidden selection:bg-[#ff5c35]/20">
+      <main className="antialiased overflow-x-hidden selection:bg-[#ff5c35]/20 relative z-10 bg-white/80">
 
         {/* HERO */}
         <section className="relative overflow-hidden min-h-screen flex items-center">

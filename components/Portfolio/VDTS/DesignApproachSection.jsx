@@ -47,7 +47,7 @@ const approaches = [
 
 export default function DesignApproachSection() {
   return (
-    <section className="relative py-16 lg:py-24 bg-mesh-subtle overflow-hidden">
+    <section className="relative py-16 lg:py-24 bg-transparent overflow-hidden">
       {/* Side accent */}
       <div className="absolute right-0 top-1/3 w-1 h-32 bg-gradient-to-b from-cyan-500 to-brand-500 rounded-l-full" />
 

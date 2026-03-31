@@ -11,7 +11,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-transparent">
       {/* Ambient background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-brand-500/[0.03] blur-[120px]" />
@@ -33,35 +33,28 @@ export default function HeroSection() {
             {/* Logo */}
             <div
               className={`mb-8 transition-all duration-700 ${loaded
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
                 }`}
             >
               <Image
-                src="/portfolio/vdts/logo.png"
+                src="/vdts/vdts updated logo.png"
                 alt="VDTS Logo"
-                width={224}
-                height={129}
+                width={320}
+                height={180}
+                style={{ height: "auto" }}
                 className="h-auto"
                 priority
               />
             </div>
 
-            {/* Title */}
-            <h1
-              className={`font-display text-[2rem] sm:text-[2.5rem] lg:text-[3rem] font-semibold text-slate-800 mb-4 leading-snug transition-all duration-700 delay-100 ${loaded
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
-                }`}
-            >
-              VDTS <span className="text-gradient-brand">Incident Management System</span>
-            </h1>
+
 
             {/* Description */}
             <p
               className={`text-body-lg text-slate-500 max-w-lg leading-relaxed transition-all duration-700 delay-200 ${loaded
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
                 }`}
             >
               A centralized ticket management platform that streamlines incident
@@ -72,13 +65,13 @@ export default function HeroSection() {
           {/* ── Right Column — Mockup ── */}
           <div
             className={`relative lg:-mr-16 xl:-mr-24 transition-all duration-1000 delay-300 ${loaded
-                ? "opacity-100 translate-x-0 scale-100"
-                : "opacity-0 translate-x-12 scale-95"
+              ? "opacity-100 translate-x-0 scale-100"
+              : "opacity-0 translate-x-12 scale-95"
               }`}
           >
             <Image
               src="/portfolio/vdts/Group 2.png"
-              alt="VDTS Incident Management System — dashboard and mobile views"
+              alt="Incident Management System — dashboard and mobile views"
               width={1400}
               height={900}
               className="w-full lg:w-[120%] xl:w-[130%] h-auto object-contain drop-shadow-2xl"

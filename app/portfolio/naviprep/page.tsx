@@ -91,13 +91,10 @@ export default function Page() {
 
   return (
     <>
-      {/* Background grid */}
-      <div className="fixed inset-0 z-[-1] bg-grid-pattern bg-[size:4rem_4rem] opacity-40 pointer-events-none"></div>
-
       {/* NAVBAR */}
       <Header />
 
-      <main className="max-w-6xl mx-auto px-6 pt-32 pb-32">
+      <main className="max-w-6xl mx-auto px-6 pt-32 pb-32 bg-white/80 relative z-10 rounded-3xl mt-8">
 
         {/* HERO */}
 

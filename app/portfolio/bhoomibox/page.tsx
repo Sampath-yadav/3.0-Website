@@ -47,8 +47,7 @@ const BhoomiboxPage = () => {
     return (
         <div className="min-h-screen">
             <Header />
-
-            <main className="pt-24 relative z-10">
+            <main className="pt-24 relative z-10 bg-white/80">
                 {/* ===== HERO SECTION ===== */}
                 <section className="relative pt-20 pb-0 overflow-hidden">
                     <div className="max-w-[1400px] mx-auto px-8 w-full">
@@ -62,7 +61,7 @@ const BhoomiboxPage = () => {
                                 transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
                             >
                                 <Image
-                                    src="/bhoomi box images/BBLOGO.png"
+                                    src="/bhoomi box images/bhoomi box logo.png"
                                     alt="BhoomiBox"
                                     width={200}
                                     height={200}
@@ -92,7 +91,7 @@ const BhoomiboxPage = () => {
                                 Engineering a direct bridge between urban families and local farmers.
                             </motion.p>
 
-                            
+
                         </div>
                     </div>
 

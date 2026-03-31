@@ -68,7 +68,7 @@
 .visual {
     max-width: 1015px;
     margin: 0 auto;
-    background: #000;
+    background: #ffffff;
     border-radius: 20px;
     padding: 2px;
     overflow: hidden;
@@ -81,17 +81,17 @@
 .glassFrame {
     width: 100%;
     aspect-ratio: 16/7;
-    background: #000;
+    background: #f8f9fa;
     border-radius: 20px;
     padding: 10px;
     border: 4px solid var(--accent-secondary);
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.08);
 }
 
 .innerContent {
     width: 100%;
     height: 100%;
-    background: #000;
+    background: #ffffff;
     border-radius: 12px;
     display: flex;
     justify-content: center;

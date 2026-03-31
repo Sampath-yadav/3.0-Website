@@ -15,31 +15,35 @@ const WavyBgAnimator = () => {
 
     if (!wavyLeft || !wavyRight) return;
 
-    // Specific check for Blue Cross page
-    const isBlueCrossPage = pathname === "/portfolio/blue-cross-hyderabad";
-
-    if (isBlueCrossPage) {
-      gsap.killTweensOf([wavyLeft, wavyRight]);
-      wavyLeft.classList.remove("wave-active");
-      wavyRight.classList.remove("wave-active");
-      gsap.set([wavyLeft, wavyRight, meshBg], { display: "none", opacity: 0 });
-      return;
-    }
-
     // Restore for other pages
     gsap.set([wavyLeft, wavyRight, meshBg], { display: "block" });
 
+    // Set theme-specific background for Portfolio
+    const isPortfolio = pathname.startsWith("/portfolio");
+    const bgImage = isPortfolio 
+      ? "url('/images/portfolio/banne123 1.png')" 
+      : "url('/images/backgrounds/template-bg.png')";
+    
+    gsap.set([wavyLeft, wavyRight], { backgroundImage: bgImage });
+    
+    if (isPortfolio) {
+      gsap.set(meshBg, { opacity: 0.2 }); // Slightly boost mesh for Portfolio
+    } else {
+      gsap.set(meshBg, { opacity: 1 });
+    }
+
     // On first load, the IntroLoader handles the animation
+    let timer: NodeJS.Timeout;
     if (isFirstLoad.current) {
       isFirstLoad.current = false;
       // Still start the float after a short delay for first load
-      setTimeout(() => {
+      timer = setTimeout(() => {
         wavyLeft.classList.add("wave-active");
         wavyRight.classList.add("wave-active");
         gsap.set(wavyLeft, { x: "0%", opacity: 1 });
         gsap.set(wavyRight, { x: "0%", opacity: 1 });
       }, 1800);
-      return;
+      return () => clearTimeout(timer);
     }
 
     // On route change — reset and replay

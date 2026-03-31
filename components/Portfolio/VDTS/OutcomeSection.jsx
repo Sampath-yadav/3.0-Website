@@ -40,7 +40,7 @@ const outcomes = [
 
 export default function OutcomeSection() {
   return (
-    <section className="relative py-16 lg:py-24 bg-white overflow-hidden">
+    <section className="relative py-16 lg:py-24 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal>
           <div className="relative rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-10 sm:p-12 lg:p-16 overflow-hidden">

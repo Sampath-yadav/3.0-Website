@@ -12,7 +12,7 @@ import OutcomeSection from "@/components/Portfolio/VDTS/OutcomeSection";
 
 export default function Home() {
   return (
-    <>
+    <main className="relative min-h-screen">
       <Header />
       <HeroSection />
       <OverviewSection />
@@ -24,6 +24,5 @@ export default function Home() {
       <DesignApproachSection />
       <OutcomeSection />
       <Footer />
-    </>
-  );
+    </main>  );
 }

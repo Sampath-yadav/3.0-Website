@@ -65,7 +65,7 @@ const accentMap = {
 /* ── Overview Section ───────────────────────────────────────── */
 export default function OverviewSection() {
   return (
-    <section className="relative py-16 lg:py-24 bg-white overflow-hidden">
+    <section className="relative py-16 lg:py-24 bg-transparent overflow-hidden">
       {/* Ambient background shapes */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-blue-50/40 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-violet-50/30 blur-[100px] pointer-events-none" />

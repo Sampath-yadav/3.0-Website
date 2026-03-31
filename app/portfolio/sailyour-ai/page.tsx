@@ -490,7 +490,7 @@ export default function SailYourAIPage() {
     <>
       <style dangerouslySetInnerHTML={{ __html: PAGE_STYLES }} />
       <Header />
-      <div className="sailyour-page" style={{ background: "#fff", position: "relative", zIndex: 10 }}>
+      <div className="sailyour-page bg-white/80" style={{ position: "relative", zIndex: 10 }}>
 
         {/* HERO */}
         <section className="sy-hero">

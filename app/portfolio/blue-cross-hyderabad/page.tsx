@@ -239,7 +239,7 @@ export default function BlueCrossPage() {
   }, []);
 
   return (
-    <>
+    <div className="relative min-h-screen">
       <Header />
       <div
         className="bluecross-page"
@@ -294,11 +294,11 @@ export default function BlueCrossPage() {
         }
       `}</style>
 
-      <main className="bluecross-page-wrapper bg-white antialiased overflow-x-hidden">
+      <main className="bluecross-page-wrapper antialiased overflow-x-hidden relative z-10">
 
         {/* ── HERO ── */}
-        <section className="relative min-h-screen flex items-center overflow-hidden pt-32 sm:pt-36 bg-white">
-          <div className="absolute top-20 right-0 w-96 h-96 rounded-full opacity-10" style={{ background: "radial-gradient(circle, #1B9AD2 0%, transparent 70%)" }} />
+        <section className="relative min-h-screen flex items-center overflow-hidden pt-32 sm:pt-36">
+          <div className="absolute top-20 right-0 w-96 h-96 rounded-full opacity-25" style={{ background: "radial-gradient(circle, #1B9AD2 0%, transparent 70%)" }} />
           <PawPrint className="bc-paw-watermark top-32 right-20 w-32 h-32 text-gray-400" />
           <PawPrint className="bc-paw-watermark bottom-32 right-40 w-24 h-24 text-gray-400" />
           <PawPrint className="bc-paw-watermark top-1/2 right-8 w-16 h-16 text-gray-400" />
@@ -398,7 +398,7 @@ export default function BlueCrossPage() {
         </section>
 
         {/* ── SERVICES ── */}
-        <section className="py-24 bg-white" ref={servicesSectionRef}>
+        <section className="py-24" ref={servicesSectionRef}>
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16 transition-all duration-700" style={{ opacity: servicesVisible ? 1 : 0, transform: servicesVisible ? "translateY(0)" : "translateY(30px)" }}>
               <span className="text-sm font-bold tracking-widest uppercase" style={{ color: "#1B9AD2" }}>Our Services</span>
@@ -419,7 +419,7 @@ export default function BlueCrossPage() {
         </section>
 
         {/* ── FEATURES ── */}
-        <section className="py-24 bg-slate-50" ref={featuresSectionRef}>
+        <section className="py-24" ref={featuresSectionRef}>
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
               <span className="text-sm font-bold tracking-widest uppercase" style={{ color: "#1B9AD2" }}>Platform Features</span>
@@ -443,7 +443,7 @@ export default function BlueCrossPage() {
         </section>
 
         {/* ── MULTILANG ── */}
-        <section className="py-24 relative overflow-hidden bg-white" ref={multilangSectionRef}>
+        <section className="py-24 relative overflow-hidden" ref={multilangSectionRef}>
           <div className="absolute inset-0 pointer-events-none flex flex-col justify-center gap-0 pl-6">
             {[...Array(4)].map((_, rowIndex) => (
               <div key={rowIndex} className="flex gap-2">
@@ -468,7 +468,7 @@ export default function BlueCrossPage() {
         </section>
 
         {/* ── APP STORE ── */}
-        <section className="py-24 relative overflow-hidden" style={{ background: "#f8fafc" }} ref={appStoreSectionRef}>
+        <section className="py-24 relative overflow-hidden" style={{ background: "rgba(248, 250, 252, 0.7)" }} ref={appStoreSectionRef}>
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-12 transition-all duration-700" style={{ opacity: appStoreVisible ? 1 : 0, transform: appStoreVisible ? "translateY(0)" : "translateY(30px)" }}>
               <h2 className="text-3xl font-bold">Supports <span className="font-black" style={{ color: "#F97316" }}>Both</span> <span className="bc-gradient-text">Versions</span></h2>
@@ -503,6 +503,6 @@ export default function BlueCrossPage() {
 
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

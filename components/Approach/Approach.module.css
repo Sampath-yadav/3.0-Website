@@ -279,6 +279,60 @@
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* ── Manual Navigation Arrows ──────────────────────────────── */
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #e5e5e5;
+  color: #B2215A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.navBtn.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navBtn:hover:not(:disabled) {
+  background: #B2215A;
+  color: white;
+  border-color: #B2215A;
+  box-shadow: 0 6px 16px rgba(178, 33, 90, 0.25);
+}
+
+.navBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  background: #f9f9f9;
+}
+
+.prevBtn {
+  left: 40px;
+}
+
+.nextBtn {
+  right: 40px;
+}
+
+.btnContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* ================================================================
    RESPONSIVE
 ================================================================ */

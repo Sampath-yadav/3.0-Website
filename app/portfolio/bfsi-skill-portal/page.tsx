@@ -290,7 +290,7 @@ function Consortium() {
   }, [])
 
   return (
-    <section id="consortium" style={{ padding: '100px 0', background: 'var(--white)' }}>
+    <section id="consortium" style={{ padding: '100px 0' }}>
       <div className="bfsi-wrap bfsi-two-col">
         <div ref={ref} className={`bfsi-reveal ${inView ? 'in-view' : ''}`}>
           <div style={{
@@ -376,7 +376,7 @@ function Consortium() {
 
 function RoleBFSI() {
   return (
-    <section id="role-holders" style={{ padding: '100px 0', background: 'var(--off-white)' }}>
+    <section id="role-holders" style={{ padding: '100px 0' }}>
       <div className="bfsi-wrap">
         <div style={{ textAlign: 'center', maxWidth: 820, margin: '0 auto 64px' }}>
           <Eyebrow>Industry Collaboration</Eyebrow>
@@ -453,7 +453,7 @@ function Stakeholders() {
   const { ref, inView } = useInView()
 
   return (
-    <section style={{ padding: '80px 0', background: 'var(--white)', borderTop: '1px solid var(--border-light)' }}>
+    <section style={{ padding: '80px 0', borderTop: '1px solid var(--border-light)' }}>
       <div className="bfsi-wrap">
         <div ref={ref} className={`bfsi-reveal ${inView ? 'in-view' : ''}`} style={{ textAlign: 'center', marginBottom: 56 }}>
           <Eyebrow>Ecosystem Partners</Eyebrow>
@@ -496,7 +496,7 @@ function HolderCard({ holder: h }: { holder: Holder }) {
 
 function CurriculumBenefits() {
   return (
-    <section id="skills" style={{ padding: '100px 0', background: 'var(--off-white)' }}>
+    <section id="skills" style={{ padding: '100px 0' }}>
       <div className="bfsi-wrap">
         <div style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 64px' }}>
           <Eyebrow>Student Advantages</Eyebrow>
@@ -549,7 +549,7 @@ function Outcome() {
   const { ref, inView } = useInView(0.3)
 
   return (
-    <section id="outcome" style={{ padding: '100px 0', background: 'var(--white)' }}>
+    <section id="outcome" style={{ padding: '100px 0' }}>
       <div className="bfsi-wrap">
 
         {/* Section header */}
@@ -1076,7 +1076,7 @@ export default function Page() {
     <>
       <style dangerouslySetInnerHTML={{ __html: PAGE_STYLES }} />
       <SiteHeader />
-      <main style={{ paddingTop: 80 }}>
+      <main style={{ paddingTop: 80, position: "relative", zIndex: 1, backgroundColor: "rgba(255, 255, 255, 0.8)" }}>
         <Consortium />
         <RoleBFSI />
         <CurriculumBenefits />

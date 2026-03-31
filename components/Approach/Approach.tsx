@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from './Approach.module.css';
 
 /* ─── SVG Icons ─────────────────────────────────────────────── */
@@ -189,12 +191,17 @@ const steps = [
 /* ─── Component ─────────────────────────────────────────────── */
 export default function Approach() {
   const [mounted, setMounted] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [showArrows, setShowArrows] = useState(false);
+
   const sectionRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const connectorFillRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const dotRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const hasCompletedRef = useRef(false);
+  const connectorProgressRef = useRef(0);
 
   useEffect(() => {
     setMounted(true);
@@ -203,7 +210,7 @@ export default function Approach() {
   useEffect(() => {
     if (!mounted) return;
 
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
     const section = sectionRef.current;
     if (!section) return;
@@ -218,7 +225,7 @@ export default function Approach() {
 
       // DESKTOP & TABLET
       mm.add("(min-width: 769px)", () => {
-        /* ── Initial states ── */
+        /* ── Initial card states ── */
         cardRefs.current.forEach((card, i) => {
           if (!card) return;
           gsap.set(card, {
@@ -228,58 +235,92 @@ export default function Approach() {
           });
         });
 
-        if (connectorFillRef.current) gsap.set(connectorFillRef.current, { scaleX: 0, transformOrigin: 'left center' });
+        if (connectorFillRef.current) {
+          gsap.set(connectorFillRef.current, { scaleX: 0, transformOrigin: 'left center' });
+        }
 
-        /* ── Animated Timeline ── */
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: 'top top',
-            end: () => `+=${STEPS * window.innerHeight * 1.2}`,
-            pin: true,
-            scrub: 0.8,
-            anticipatePin: 1,
-            fastScrollEnd: true,
-            invalidateOnRefresh: true,
-            onUpdate: (self) => {
-              const rawIndex = self.progress * STEPS;
+        /* ── Main timeline (scrub-driven) ── */
+        const tl = gsap.timeline();
 
-              cardRefs.current.forEach((card, i) => {
-                if (!card) return;
-                const dist = Math.abs(i - rawIndex);
-                const proximity = Math.max(0, 1 - dist / 1.5);
-                const isActive = dist < 0.5;
+        // Track horizontal movement
+        tl.to(trackRef.current, {
+          x: () => -(STEPS * window.innerWidth * 0.5),
+          ease: 'none',
+          duration: 1,
+        }, 0);
 
-                gsap.to(card, {
-                  opacity: 0.35 + proximity * 0.65,
-                  scale: 0.92 + proximity * 0.08,
-                  y: isActive ? -8 : 20 * (1 - proximity),
-                  boxShadow: isActive
-                    ? '0 20px 60px rgba(178, 33, 90, 0.15), 0 8px 24px rgba(255, 92, 53, 0.1)'
-                    : '0 4px 16px rgba(0, 0, 0, 0.04)',
-                  duration: 0.3,
-                  overwrite: 'auto',
-                });
+        // Connector is driven manually in onUpdate with direction-based speed
+
+        /* ── ScrollTrigger pins & scrubs the timeline ── */
+        const ST = ScrollTrigger.create({
+          trigger: section,
+          start: 'top top',
+          end: () => `+=${STEPS * window.innerHeight * 0.8}`,
+          pin: true,
+          scrub: 0.6,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          animation: tl,
+          onUpdate: (self) => {
+            const p = self.progress;
+            const rawIndex = p * STEPS;
+
+            setActiveIndex(Math.round(rawIndex));
+            setShowArrows(p > 0.02 && p < 0.98);
+
+            // Connector: slow fill going down, fast drain going up
+            const scrollingDown = self.direction === 1;
+            const lerpSpeed = scrollingDown ? 0.015 : 0.80;
+            const target = p;
+            connectorProgressRef.current += (target - connectorProgressRef.current) * lerpSpeed;
+            if (connectorFillRef.current) {
+              gsap.set(connectorFillRef.current, { scaleX: Math.max(0, connectorProgressRef.current) });
+            }
+
+            // Card & dot visual effects (immediate — no competing tweens)
+            cardRefs.current.forEach((card, i) => {
+              if (!card) return;
+              const dist = Math.abs(i - rawIndex);
+              const proximity = Math.max(0, 1 - dist / 1.5);
+              const isActive = dist < 0.5;
+
+              gsap.set(card, {
+                opacity: 0.35 + proximity * 0.65,
+                scale: 0.92 + proximity * 0.08,
+                y: isActive ? -8 : 20 * (1 - proximity),
+                boxShadow: isActive
+                  ? '0 20px 60px rgba(178, 33, 90, 0.15), 0 8px 24px rgba(255, 92, 53, 0.1)'
+                  : '0 4px 16px rgba(0, 0, 0, 0.04)',
               });
+            });
 
-              dotRefs.current.forEach((dot, i) => {
-                if (!dot) return;
-                const dist = Math.abs(i - rawIndex);
-                const isActive = dist < 0.5;
-                gsap.to(dot, {
-                  backgroundColor: isActive ? '#B2215A' : '#d4d4d4',
-                  scale: isActive ? 1.8 : 1,
-                  duration: 0.3,
-                  overwrite: 'auto',
-                });
+            dotRefs.current.forEach((dot, i) => {
+              if (!dot) return;
+              const dist = Math.abs(i - rawIndex);
+              const isActive = dist < 0.5;
+              gsap.set(dot, {
+                backgroundColor: isActive ? '#B2215A' : '#d4d4d4',
+                scale: isActive ? 1.8 : 1,
+              });
+            });
+          },
+          onLeave: () => {
+            hasCompletedRef.current = true;
+          },
+          onEnterBack: () => {
+            // After animation played once, skip on scroll back
+            if (hasCompletedRef.current) {
+              gsap.to(window, {
+                scrollTo: ST.start - 1,
+                duration: 0.3,
+                ease: 'power2.out',
+                overwrite: 'auto',
               });
             }
-          }
+          },
         });
 
-        const track = trackRef.current;
-        if (track) tl.to(track, { x: () => -(STEPS * window.innerWidth * 0.5), ease: 'none' });
-        if (connectorFillRef.current) tl.to(connectorFillRef.current, { scaleX: 1, ease: 'none' }, 0);
+        (section as any)._st = ST;
       });
 
       // MOBILE
@@ -317,6 +358,32 @@ export default function Approach() {
     };
   }, [mounted]);
 
+  const goToIndex = (index: number) => {
+    if (index < 0 || index >= steps.length) return;
+    const STEPS = steps.length - 1;
+
+    // Sync scroll position
+    const st = (sectionRef.current as any)?._st;
+    if (st) {
+      const targetProgress = index / STEPS;
+      const targetScroll = st.start + targetProgress * (st.end - st.start);
+
+      gsap.to(window, {
+        scrollTo: targetScroll,
+        duration: 0.8,
+        ease: 'power2.inOut'
+      });
+    } else {
+      // Fallback if ScrollTrigger not available (e.g. mobile or not initialized)
+      setActiveIndex(index);
+      gsap.to(trackRef.current, {
+        x: -(index * (window.innerWidth * 0.5)),
+        duration: 0.6,
+        ease: 'power2.out'
+      });
+    }
+  };
+
   return (
     <section
       ref={sectionRef}
@@ -334,6 +401,25 @@ export default function Approach() {
       </header>
 
       <div className={styles.stage}>
+        {/* Navigation Arrows */}
+        <button
+          className={`${styles.navBtn} ${styles.prevBtn} ${showArrows ? styles.visible : ''}`}
+          onClick={() => goToIndex(activeIndex - 1)}
+          disabled={activeIndex === 0}
+          aria-label="Previous step"
+        >
+          <ChevronLeft size={24} />
+        </button>
+
+        <button
+          className={`${styles.navBtn} ${styles.nextBtn} ${showArrows ? styles.visible : ''}`}
+          onClick={() => goToIndex(activeIndex + 1)}
+          disabled={activeIndex === steps.length - 1}
+          aria-label="Next step"
+        >
+          <ChevronRight size={24} />
+        </button>
+
         <div ref={trackRef} className={styles.track}>
 
           {/* Connector line */}

@@ -38,6 +38,12 @@ const projects = [
         image: '/svg images/Sailor.svg',
         href: '/portfolio/sailyour-ai',
     },
+    {
+        id: 8,
+        title: 'Revision Prep',
+        image: '/revision prep/Revision Prep.png',
+        href: '/portfolio/revision-prep',
+    },
 ];
 
 export default function PortfolioGrid() {

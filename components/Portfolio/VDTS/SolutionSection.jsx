@@ -44,7 +44,7 @@ const approaches = [
 
 export default function SolutionSection() {
   return (
-    <section className="relative py-16 lg:py-24 bg-white overflow-hidden">
+    <section className="relative py-16 lg:py-24 bg-transparent overflow-hidden">
       {/* Decorative side accent */}
       <div className="absolute left-0 top-1/3 w-1 h-32 bg-gradient-to-b from-brand-500 to-cyan-500 rounded-r-full" />
 

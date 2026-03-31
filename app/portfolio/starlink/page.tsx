@@ -7,10 +7,9 @@ import { ArrowLeft } from "lucide-react";
 
 export default function StarlinkPage() {
   return (
-    <main className="relative min-h-screen bg-white">
+    <main className="relative min-h-screen">
       <Header />
-      
-      <div className="pt-24 md:pt-32 pb-12 md:pb-20 px-4 sm:px-6 max-w-7xl mx-auto">
+      <div className="pt-24 md:pt-32 pb-12 md:pb-20 px-4 sm:px-6 max-w-7xl mx-auto bg-white/80 relative z-10 rounded-3xl mt-12">
         <Link 
           href="/portfolio" 
           className="inline-flex items-center gap-2 text-neutral-500 hover:text-neutral-900 transition-colors mb-8 group"

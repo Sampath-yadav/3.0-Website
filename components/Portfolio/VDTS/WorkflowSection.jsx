@@ -112,7 +112,7 @@ export default function WorkflowSection() {
   }, [len]);
 
   return (
-    <section ref={sectionRef} className="relative py-16 lg:pt-24 lg:pb-16 bg-white overflow-hidden">
+    <section ref={sectionRef} className="relative py-16 lg:pt-24 lg:pb-16 bg-transparent overflow-hidden">
       {/* Ambient */}
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-blue-50/25 blur-[140px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full bg-violet-50/20 blur-[120px] pointer-events-none" />

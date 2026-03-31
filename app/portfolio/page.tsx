@@ -9,15 +9,6 @@ export default function PortfolioPage() {
     <main className="relative min-h-screen">
       <Header />
 
-      {/* Fixed background */}
-      <div className="fixed inset-0 -z-10 transparent">
-        <img
-          src="/images/portfolio/banne123 1.png"
-          alt=""
-          className="w-full h-full object-cover opacity-10"
-        />
-      </div>
-
       <div className="pt-32 pb-20">
         <PortfolioGrid />
       </div>
