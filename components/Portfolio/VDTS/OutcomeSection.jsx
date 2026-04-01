@@ -43,7 +43,7 @@ export default function OutcomeSection() {
     <section className="relative py-16 lg:py-24 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal>
-          <div className="relative rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-10 sm:p-12 lg:p-16 overflow-hidden">
+          <div className="relative rounded-3xl bg-black p-10 sm:p-12 lg:p-16 overflow-hidden">
             {/* Ambient glows */}
             <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-brand-500/[0.07] blur-[100px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-cyan-500/[0.06] blur-[80px] pointer-events-none" />

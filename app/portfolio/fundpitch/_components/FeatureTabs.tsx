@@ -127,7 +127,7 @@ export default function FeatureTabs() {
         {role.features.map((f) => (
           <div
             key={f.title}
-            className="group p-7 md:p-9 rounded-2xl bg-[#fff7ed] border border-[#ffedd5] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgba(255,92,53,0.12)] hover:border-[#ff5c35]/40"
+            className="group p-7 md:p-9 rounded-2xl bg-[#ff5c35]/5 border border-[#ff5c35]/10 backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:bg-[#ff5c35]/10 hover:shadow-[0_12px_32px_rgba(255,92,53,0.12)] hover:border-[#ff5c35]/40"
           >
             <div className="w-14 h-14 rounded-xl bg-[#ffedd5] group-hover:bg-[#fed7aa] transition-colors duration-300 flex items-center justify-center text-[#ff5c35] mb-6">
               {f.ico}

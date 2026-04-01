@@ -100,7 +100,7 @@ export default function FundPitchPage() {
   return (
     <>
       <Header />
-      <main className="antialiased overflow-x-hidden selection:bg-[#ff5c35]/20 relative z-10 bg-white/80">
+      <main className="antialiased overflow-x-hidden selection:bg-[#ff5c35]/20 relative z-10">
 
         {/* HERO */}
         <section className="relative overflow-hidden min-h-screen flex items-center">
@@ -133,7 +133,7 @@ export default function FundPitchPage() {
                     {META.map((m) => (
                       <div
                         key={m.label}
-                        className="flex flex-col gap-1 px-5 py-4 rounded-xl bg-[#f9fafb] border border-[#eee] transition-colors duration-200 hover:border-[#ff5c35]/30 shadow-sm"
+                        className="flex flex-col gap-1 px-5 py-4 rounded-xl bg-[#ff5c35]/5 border border-[#ff5c35]/10 backdrop-blur-md transition-colors duration-200 hover:bg-[#ff5c35]/10 hover:border-[#ff5c35]/30 shadow-sm"
                       >
                         <span className="text-[0.62rem] uppercase tracking-[0.2em] text-[#aaa] font-bold">
                           {m.label}
@@ -171,7 +171,7 @@ export default function FundPitchPage() {
         </section>
 
         {/* PROBLEM & SOLUTION */}
-        <section className="py-14 md:py-20 bg-[#f9fafb] border-y border-[#eee]">
+        <section className="py-14 md:py-20">
           <div className="max-w-5xl mx-auto px-6">
             <AnimateOnScroll className="text-center mb-10 md:mb-14">
               <h2 className="text-[2.5rem] sm:text-5xl lg:text-[3.25rem] font-extrabold tracking-[-0.04em] leading-[0.95] text-[#111]">
@@ -190,7 +190,7 @@ export default function FundPitchPage() {
         </section>
 
         {/* FEATURES */}
-        <section className="py-14 md:py-20 bg-white">
+        <section className="py-14 md:py-20">
           <div className="max-w-5xl mx-auto px-6">
             <AnimateOnScroll className="mb-8 md:mb-12">
               <h2 className="text-[2.5rem] sm:text-5xl lg:text-[3.25rem] font-extrabold tracking-[-0.04em] leading-[0.95] text-[#111]">
@@ -208,7 +208,7 @@ export default function FundPitchPage() {
         </section>
 
         {/* IMPACT */}
-        <section className="py-14 md:py-20 bg-white border-t border-[#eee]">
+        <section className="py-14 md:py-20">
           <div className="max-w-5xl mx-auto px-6">
             <AnimateOnScroll className="text-center mb-10 md:mb-14">
               <h2 className="text-[2.5rem] sm:text-5xl lg:text-[3.25rem] font-extrabold tracking-[-0.04em] leading-[0.95] text-[#111]">
@@ -223,7 +223,7 @@ export default function FundPitchPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 md:mb-16">
               {STATS.map((s, i) => (
                 <AnimateOnScroll key={s.label} delay={i * 70}>
-                  <div className="text-center py-8 sm:py-12 px-5 bg-[#f9fafb] rounded-2xl border border-[#eee] transition-all duration-300 hover:-translate-y-1 hover:border-[#ff5c35]/50 shadow-sm">
+                  <div className="text-center py-8 sm:py-12 px-5 rounded-2xl bg-[#ff5c35]/5 border border-[#ff5c35]/10 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#ff5c35]/10 hover:border-[#ff5c35]/50 shadow-sm">
                     <Counter
                       target={s.target}
                       suffix={s.suffix}
@@ -234,7 +234,7 @@ export default function FundPitchPage() {
                 </AnimateOnScroll>
               ))}
               <AnimateOnScroll delay={210}>
-                <div className="text-center py-8 sm:py-12 px-5 bg-[#f9fafb] rounded-2xl border border-[#eee] transition-all duration-300 hover:-translate-y-1 hover:border-[#ff5c35]/50 shadow-sm">
+                <div className="text-center py-8 sm:py-12 px-5 rounded-2xl bg-[#ff5c35]/5 border border-[#ff5c35]/10 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#ff5c35]/10 hover:border-[#ff5c35]/50 shadow-sm">
                   <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#ff5c35] leading-none">&infin;</div>
                   <div className="text-[0.85rem] sm:text-[0.9rem] text-[#6b7280] mt-2.5 font-semibold">Scalable</div>
                 </div>
@@ -245,7 +245,7 @@ export default function FundPitchPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-16 max-w-4xl mx-auto">
               {SWOT.map((s, i) => (
                 <AnimateOnScroll key={s.title} delay={i * 70}>
-                  <div className="p-7 md:p-9 rounded-2xl bg-[#f9fafb] border border-[#eee] transition-all duration-300 hover:-translate-y-1 hover:border-[#ff5c35]/35 h-full shadow-sm">
+                  <div className="p-7 md:p-9 rounded-2xl bg-[#ff5c35]/5 border border-[#ff5c35]/10 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#ff5c35]/10 hover:border-[#ff5c35]/35 h-full shadow-sm">
                     <h4 className="text-[1.05rem] font-bold mb-4 flex items-center gap-2.5 text-[#222]">
                       <span className="text-[#ff5c35]">{s.icon}</span>{s.title}
                     </h4>
@@ -264,7 +264,7 @@ export default function FundPitchPage() {
 
             {/* CTA */}
             <AnimateOnScroll>
-              <div className="relative max-w-3xl mx-auto text-center py-12 px-8 md:py-16 md:px-16 rounded-3xl bg-[#f9fafb] border border-[#eee] overflow-hidden shadow-sm">
+              <div className="relative max-w-3xl mx-auto text-center py-12 px-8 md:py-16 md:px-16 rounded-3xl bg-[#ff5c35]/5 border border-[#ff5c35]/10 backdrop-blur-md overflow-hidden shadow-sm">
                 <div className="pointer-events-none absolute -top-12 -right-12 w-48 h-48 bg-[#ff5c35]/5 rounded-full blur-[60px]" />
                 <div className="pointer-events-none absolute -bottom-12 -left-12 w-48 h-48 bg-[#ff5c35]/5 rounded-full blur-[60px]" />
 
